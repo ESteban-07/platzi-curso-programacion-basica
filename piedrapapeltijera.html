@@ -4,12 +4,15 @@
         <meta charset="UTF-8" />
         <title>Piedra, papel o tijera</title>
         <script>
+            function aleatorio(min, max) {
+                return Math.floor(Math.random() * (max - min + 1) + min);
+            }
             // 1 es piedra, 2 es papel, 3 es tijera
             let jugador = 0;
-            let pc = 2;
-            jugador = prompt(
-                'Elige: 1 para piedra, 2 para papel, 3 para tijera'
-            );
+            let min = 1;
+            let max = 3;
+            let pc = aleatorio(1, 3);
+            jugador = prompt('Elige: 1 piedra, 2 papel, 3 tijera');
             // alert('Elegiste ' + jugador);
             if (jugador == 1) {
                 alert('Elegiste 🥌');
@@ -32,46 +35,16 @@
             }
 
             // Algoritmo de combate
-            // if (pc == jugador) {
-            //     alert('EMPATE');
-            // } else if (jugador == 1 && pc == 3) {
-            //     // piedra mata tijera
-            //     alert('GANASTE');
-            // } else if (jugador == 2 && pc == 1) {
-            //     // papel mata piedra
-            //     alert('GANASTE');
-            // } else if (jugador == 3 && pc == 2) {
-            //     // tijera mata papel
-            //     alert('GANASTE');
-            // } else {
-            //     alert('PERDISTE');
-            // }
-
-            /*
-            Resolviendo el algoritmo utilizando álgebra y matemáticas
-            _________________________________________________________
-
-            EXPLICACIÓN: recordemos que las tres opciones que tenemos (1: piedra, 2: papel, 3: tijera).
-            Sí el jugador elige piedra y la pc elige tijera, efectuando la resta (1) - (3) obtendremos
-            '-2' como resultado, al igual que si el jugador elige papel y la pc piedra, si restamos
-            (2) - (1) obtendremos como resultado '1', y si el jugador elige tijera y la pc elige papel
-            efectuando la resta (3) - (2) obtendremos '1' nuevamente.
-
-            Por lo tanto, con los casos anteriormente mencionados, podemos decir que '-2' y  '1' son
-            resultados cuando el JUGADOR gana contra el pc. Por otra parte, '-1' y '2' serían justo
-            los resultados opuestos, que determinan cuando el PC gana el combate.
-
-            Por último, podemos decir que el empate se define cuando ambas partes, el jugador y el pc,
-            eligen la misma opción, obteniendo como resultado '0' (1 - 1, 2 - 2, 3 - 3).
-            
-            **Imagen de Referencia: https://bit.ly/3BLGhNR
-            */
-
-            if (jugador == pc) {
+            if (pc == jugador) {
                 alert('EMPATE');
-            } else if (jugador - pc == 1) {
+            } else if (jugador == 1 && pc == 3) {
+                // piedra mata tijera
                 alert('GANASTE');
-            } else if (jugador - pc == -2) {
+            } else if (jugador == 2 && pc == 1) {
+                // papel mata piedra
+                alert('GANASTE');
+            } else if (jugador == 3 && pc == 2) {
+                // tijera mata papel
                 alert('GANASTE');
             } else {
                 alert('PERDISTE');
