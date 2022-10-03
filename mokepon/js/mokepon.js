@@ -1,9 +1,20 @@
+// VARIABLE GLOBAL
+let ataqueJugador;
+
+// FUNCIÓN PARA INCIAR EL JUEGO
 function iniciarJuego() {
     let btnMascotaJugador = document.getElementById('btnMascota');
     btnMascotaJugador.addEventListener('click', seleccionarMascotaJugador);
+
+    let btnFuego = document.getElementById('btnFuego');
+    btnFuego.addEventListener('click', ataqueFuego);
+    let btnAgua = document.getElementById('btnAgua');
+    btnAgua.addEventListener('click', ataqueAgua);
+    let btnTierra = document.getElementById('btnTierra');
+    btnTierra.addEventListener('click', ataqueTierra);
 }
 
-// Solución Clase
+// FUNCIONES PARA MASCOTAS
 function seleccionarMascotaJugador() {
     let inputHipodoge = document.getElementById('hipodoge');
     let inputCapipepo = document.getElementById('capipepo');
@@ -23,9 +34,6 @@ function seleccionarMascotaJugador() {
         alert('Selecciona una mascota');
     }
 
-    // Explicación: Sí la etiqueta <span> que contiene el nombre de la mascota del
-    // jugador NO se encuentra vacía, entonces el enemigo puede elegir su mascota.
-    // En caso contrario, no se ejecutará la función seleccionarMascotaEnemigo().
     if (!(spanMascotaJugador.innerText == '')) {
         seleccionarMascotaEnemigo();
     }
@@ -47,8 +55,24 @@ function seleccionarMascotaEnemigo() {
     }
 }
 
+// FUNCIONES PARA ATAQUES
+function ataqueFuego() {
+    ataqueJugador = 'FUEGO';
+    alert(ataqueJugador);
+}
+function ataqueAgua() {
+    ataqueJugador = 'AGUA';
+    alert(ataqueJugador);
+}
+function ataqueTierra() {
+    ataqueJugador = 'TIERRA';
+    alert(ataqueJugador);
+}
+
+// FUNCIÓN PARA NÚMERO ALEATORIO
 function aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+// EVENTO PARA INICIAR EL JUEGO CUANDO CARGUE EL DOM
 window.addEventListener('load', iniciarJuego);
