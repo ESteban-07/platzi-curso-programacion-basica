@@ -3,26 +3,20 @@ function iniciarJuego() {
     btnMascotaJugador.addEventListener('click', seleccionarMascotaJugador);
 }
 
-// Mi solución
+// Solución Clase
 function seleccionarMascotaJugador() {
-    // #1: Utilizando arrays de mascotas y retornando la seleccionada
-    let mascotas = document.querySelectorAll('input');
-    for (let mascota of mascotas) {
-        if (mascota.checked) {
-            return console.log(primerLetraMayuscula(mascota.id));
-        }
+    let inputHipodoge = document.getElementById('hipodoge');
+    let inputCapipepo = document.getElementById('capipepo');
+    let inputRatigueya = document.getElementById('ratigueya');
+    if (inputHipodoge.checked) {
+        alert('Seleccionaste a Hipodoge');
+    } else if (inputCapipepo.checked) {
+        alert('Seleccionaste a Capipepo');
+    } else if (inputRatigueya.checked) {
+        alert('Seleccionaste a Ratigueya');
+    } else {
+        alert('Selecciona una mascota');
     }
-
-    // #2: Evaluando si existe algún input checked en el DOM
-    // para imprimir el valor del elemento seleccionado
-    let mascotaSeleccionada = document.querySelector('input:checked');
-    if (mascotaSeleccionada) {
-        console.log(primerLetraMayuscula(mascotaSeleccionada.id));
-    }
-}
-
-function primerLetraMayuscula(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 window.addEventListener('load', iniciarJuego);
