@@ -1,5 +1,7 @@
 // VARIABLE GLOBAL
 let ataqueJugador;
+let ataqueEnemigo;
+const ataques = ['FUEGO 🔥', 'AGUA 💧', 'TIERRA 🌱'];
 
 // FUNCIÓN PARA INCIAR EL JUEGO
 function iniciarJuego() {
@@ -40,13 +42,13 @@ function seleccionarMascotaJugador() {
 }
 
 function seleccionarMascotaEnemigo() {
-    let ataqueAleatorio = aleatorio(1, 3);
+    let mascotaAleatoria = aleatorio(1, 3);
     let spanMascotaEnemigo = document.getElementById('mascotaEnemigo');
 
-    if (ataqueAleatorio == 1) {
+    if (mascotaAleatoria == 1) {
         // Hipodoge
         spanMascotaEnemigo.innerHTML = 'Hipodoge';
-    } else if (ataqueAleatorio == 2) {
+    } else if (mascotaAleatoria == 2) {
         // Capipepo
         spanMascotaEnemigo.innerHTML = 'Capipepo';
     } else {
@@ -59,14 +61,23 @@ function seleccionarMascotaEnemigo() {
 function ataqueFuego() {
     ataqueJugador = 'FUEGO';
     alert(ataqueJugador);
+    ataqueAleatorioEnemigo();
 }
 function ataqueAgua() {
     ataqueJugador = 'AGUA';
     alert(ataqueJugador);
+    ataqueAleatorioEnemigo();
 }
 function ataqueTierra() {
     ataqueJugador = 'TIERRA';
     alert(ataqueJugador);
+    ataqueAleatorioEnemigo();
+}
+
+function ataqueAleatorioEnemigo() {
+    let random = aleatorio(0, 2);
+    ataqueEnemigo = ataques[random];
+    alert('Ataque Enemigo: ' + ataqueEnemigo);
 }
 
 // FUNCIÓN PARA NÚMERO ALEATORIO
