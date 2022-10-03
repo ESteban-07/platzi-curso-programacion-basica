@@ -3,17 +3,36 @@ let ataqueJugador;
 let ataqueEnemigo;
 const ataques = ['FUEGO 🔥', 'AGUA 💧', 'TIERRA 🌱'];
 
+// VARIABLE TIPO BOLEANA QUE VERIFICA SI LA FUNCIÓN INDICADA FUE EJECUTADA O NO
+let executed = false;
+
 // FUNCIÓN PARA INCIAR EL JUEGO
 function iniciarJuego() {
-    let btnMascotaJugador = document.getElementById('btnMascota');
-    btnMascotaJugador.addEventListener('click', seleccionarMascotaJugador);
-
     let btnFuego = document.getElementById('btnFuego');
-    btnFuego.addEventListener('click', ataqueFuego);
     let btnAgua = document.getElementById('btnAgua');
-    btnAgua.addEventListener('click', ataqueAgua);
     let btnTierra = document.getElementById('btnTierra');
-    btnTierra.addEventListener('click', ataqueTierra);
+
+    // DESHABILITANDO LOS BOTONES DE COMBATE
+    btnFuego.disabled = true;
+    btnAgua.disabled = true;
+    btnTierra.disabled = true;
+
+    let btnMascotaJugador = document.getElementById('btnMascota');
+
+    btnMascotaJugador.addEventListener('click', () => {
+        seleccionarMascotaJugador();
+
+        // VALIDANDO QUE LA FUNCIÓN SE HA EJECUTADO PARA HABILITAR LOS BOTONES DE COMBATE
+        if (executed) {
+            btnFuego.disabled = false;
+            btnAgua.disabled = false;
+            btnTierra.disabled = false;
+
+            btnFuego.addEventListener('click', ataqueFuego);
+            btnAgua.addEventListener('click', ataqueAgua);
+            btnTierra.addEventListener('click', ataqueTierra);
+        }
+    });
 }
 
 // FUNCIONES PARA MASCOTAS
@@ -38,7 +57,10 @@ function seleccionarMascotaJugador() {
 
     if (!(spanMascotaJugador.innerText == '')) {
         seleccionarMascotaEnemigo();
+        return (executed = true);
     }
+
+    return (executed = false);
 }
 
 function seleccionarMascotaEnemigo() {
@@ -59,25 +81,35 @@ function seleccionarMascotaEnemigo() {
 
 // FUNCIONES PARA ATAQUES
 function ataqueFuego() {
-    ataqueJugador = 'FUEGO';
-    alert(ataqueJugador);
+    ataqueJugador = ataques[0];
     ataqueAleatorioEnemigo();
 }
+
 function ataqueAgua() {
-    ataqueJugador = 'AGUA';
-    alert(ataqueJugador);
+    ataqueJugador = ataques[1];
     ataqueAleatorioEnemigo();
 }
+
 function ataqueTierra() {
-    ataqueJugador = 'TIERRA';
-    alert(ataqueJugador);
+    ataqueJugador = ataques[2];
     ataqueAleatorioEnemigo();
 }
 
 function ataqueAleatorioEnemigo() {
     let random = aleatorio(0, 2);
     ataqueEnemigo = ataques[random];
-    alert('Ataque Enemigo: ' + ataqueEnemigo);
+
+    crearMensaje();
+}
+
+// FUNCIÓN PARA CREAR MENSAJES
+function crearMensaje() {
+    let mostrarMensaje = document.getElementById('mostrarMensaje');
+
+    let parrafo = document.createElement('p');
+    parrafo.innerHTML = `Tu mascota atacó con ${ataqueJugador}, la mascota del enemigo atacó con ${ataqueEnemigo}`;
+
+    mostrarMensaje.appendChild(parrafo);
 }
 
 // FUNCIÓN PARA NÚMERO ALEATORIO
