@@ -126,6 +126,17 @@ function combate() {
         numVidasJugador--;
         spanVidasJugador.innerHTML = `${numVidasJugador}`;
     }
+
+    revisarVidas();
+}
+
+// REVISAR VIDAS DESPUES DE CADA COMBATE
+function revisarVidas() {
+    if (numVidasEnemigo == 0) {
+        crearMensajeFinal('GANASTE EL COMBATE 😀');
+    } else if (numVidasJugador == 0) {
+        crearMensajeFinal('PERDISTE EL COMBATE 😪');
+    }
 }
 
 // FUNCIÓN PARA CREAR MENSAJES
@@ -134,6 +145,16 @@ function crearMensaje(resultado) {
 
     let parrafo = document.createElement('p');
     parrafo.innerHTML = `Tu mascota atacó con ${ataqueJugador}, la mascota del enemigo atacó con ${ataqueEnemigo} - ${resultado}`;
+
+    mostrarMensaje.appendChild(parrafo);
+}
+
+// FUNCIÓN PARA MOSTRAR MENSAJE FINAL
+function crearMensajeFinal(resultadoFinal) {
+    let mostrarMensaje = document.getElementById('mostrarMensaje');
+
+    let parrafo = document.createElement('p');
+    parrafo.innerHTML = `${resultadoFinal}`;
 
     mostrarMensaje.appendChild(parrafo);
 }
