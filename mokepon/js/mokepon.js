@@ -1,6 +1,8 @@
 // VARIABLE GLOBAL
 let ataqueJugador;
 let ataqueEnemigo;
+let numVidasJugador = 3;
+let numVidasEnemigo = 3;
 const ataques = ['FUEGO 🔥', 'AGUA 💧', 'TIERRA 🌱'];
 
 // VARIABLE TIPO BOLEANA QUE VERIFICA SI LA FUNCIÓN INDICADA FUE EJECUTADA O NO
@@ -106,6 +108,9 @@ function ataqueAleatorioEnemigo() {
 
 // FUNCIÓN QUE DETERMINA EL RESULTADO DEL COMBATE
 function combate() {
+    let spanVidasJugador = document.getElementById('vidasJugador');
+    let spanVidasEnemigo = document.getElementById('vidasEnemigo');
+
     if (ataqueJugador == ataqueEnemigo) {
         crearMensaje('EMPATASTE 🤔❗');
     } else if (
@@ -114,8 +119,12 @@ function combate() {
         (ataqueJugador == 'TIERRA 🌱' && ataqueEnemigo == 'AGUA 💧')
     ) {
         crearMensaje('GANASTE 😆🎉');
+        numVidasEnemigo--;
+        spanVidasEnemigo.innerHTML = `${numVidasEnemigo}`;
     } else {
         crearMensaje('PERDISTE 😢👎');
+        numVidasJugador--;
+        spanVidasJugador.innerHTML = `${numVidasJugador}`;
     }
 }
 
