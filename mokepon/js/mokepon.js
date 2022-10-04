@@ -99,15 +99,32 @@ function ataqueAleatorioEnemigo() {
     let random = aleatorio(0, 2);
     ataqueEnemigo = ataques[random];
 
-    crearMensaje();
+    // Invocamos la funcion de combate() y dentro de esta enviamos el resultado de la
+    // batalla como argumento de la funcion crearMensaje() para mostrarlo en pantalla
+    combate();
+}
+
+// FUNCIÓN QUE DETERMINA EL RESULTADO DEL COMBATE
+function combate() {
+    if (ataqueJugador == ataqueEnemigo) {
+        crearMensaje('EMPATASTE 🤔❗');
+    } else if (
+        (ataqueJugador == 'FUEGO 🔥' && ataqueEnemigo == 'TIERRA 🌱') ||
+        (ataqueJugador == 'AGUA 💧' && ataqueEnemigo == 'FUEGO 🔥') ||
+        (ataqueJugador == 'TIERRA 🌱' && ataqueEnemigo == 'AGUA 💧')
+    ) {
+        crearMensaje('GANASTE 😆🎉');
+    } else {
+        crearMensaje('PERDISTE 😢👎');
+    }
 }
 
 // FUNCIÓN PARA CREAR MENSAJES
-function crearMensaje() {
+function crearMensaje(resultado) {
     let mostrarMensaje = document.getElementById('mostrarMensaje');
 
     let parrafo = document.createElement('p');
-    parrafo.innerHTML = `Tu mascota atacó con ${ataqueJugador}, la mascota del enemigo atacó con ${ataqueEnemigo}`;
+    parrafo.innerHTML = `Tu mascota atacó con ${ataqueJugador}, la mascota del enemigo atacó con ${ataqueEnemigo} - ${resultado}`;
 
     mostrarMensaje.appendChild(parrafo);
 }
