@@ -10,6 +10,12 @@ let executed = false;
 
 // FUNCIÓN PARA INCIAR EL JUEGO
 function iniciarJuego() {
+    mostrarNombreMascota();
+
+    // OCULTAR SECCION DE ATAQUES
+    let seccionAtaques = document.getElementById('seleccionarAtaque');
+    seccionAtaques.style.display = 'none';
+
     let btnFuego = document.getElementById('btnFuego');
     let btnAgua = document.getElementById('btnAgua');
     let btnTierra = document.getElementById('btnTierra');
@@ -28,6 +34,10 @@ function iniciarJuego() {
 
         // VALIDANDO QUE LA FUNCIÓN SE HA EJECUTADO PARA HABILITAR LOS BOTONES DE COMBATE
         if (executed) {
+            // OCULTA SECCION DE ATAQUES
+            let seccionAtaques = document.getElementById('seleccionarAtaque');
+            seccionAtaques.style.display = 'block';
+
             btnFuego.disabled = false;
             btnAgua.disabled = false;
             btnTierra.disabled = false;
@@ -39,6 +49,8 @@ function iniciarJuego() {
     });
 
     let btnReiniciarJuego = document.getElementById('btnReiniciar');
+    btnReiniciarJuego.style.display = 'none';
+
     btnReiniciarJuego.addEventListener('click', () => location.reload());
 }
 
@@ -59,6 +71,11 @@ function seleccionarMascotaJugador() {
     if (!(mascotaSeleccionada == '')) {
         spanNombreMascota.innerHTML = mascotaSeleccionada;
         spanMascotaJugador.innerText = mascotaSeleccionada;
+
+        // OCULTA SECCION SELECCIONAR MASCOTA
+        let sectionSeleccionarMascota =
+            document.getElementById('seleccionarMascota');
+        sectionSeleccionarMascota.style.display = 'none';
     } else {
         spanNombreMascota.innerHTML = '(Selecciona tu mascota)';
     }
@@ -172,6 +189,9 @@ function crearMensajeFinal(resultadoFinal) {
     parrafo.innerHTML = `${resultadoFinal}`;
 
     mostrarMensaje.appendChild(parrafo);
+
+    let btnReiniciarJuego = document.getElementById('btnReiniciar');
+    btnReiniciarJuego.style.display = 'block';
 }
 
 // FUNCIÓN PARA NÚMERO ALEATORIO
@@ -182,6 +202,18 @@ function aleatorio(min, max) {
 // FUNCIÓN PARA CAPITALIZAR UNA PALABRA
 function primerLetraMayuscula(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
+function mostrarNombreMascota() {
+    let mascotas = document.querySelectorAll('input[type="radio"]');
+    let spanNombreMascota = document.getElementById('nombreMascota');
+
+    mascotas.forEach((mascota) => {
+        mascota.addEventListener('click', (e) => {
+            let idMascota = e.currentTarget.id;
+            spanNombreMascota.innerHTML = primerLetraMayuscula(idMascota);
+        });
+    });
 }
 
 // EVENTO PARA INICIAR EL JUEGO CUANDO CARGUE EL DOM
