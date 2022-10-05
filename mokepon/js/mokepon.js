@@ -21,6 +21,8 @@ function iniciarJuego() {
 
     let btnMascotaJugador = document.getElementById('btnMascota');
 
+    const mascotas = document.querySelectorAll('input[type=radio]');
+
     btnMascotaJugador.addEventListener('click', () => {
         seleccionarMascotaJugador();
 
@@ -35,30 +37,35 @@ function iniciarJuego() {
             btnTierra.addEventListener('click', ataqueTierra);
         }
     });
+
+    let btnReiniciarJuego = document.getElementById('btnReiniciar');
+    btnReiniciarJuego.addEventListener('click', () => location.reload());
 }
 
 // FUNCIONES PARA MASCOTAS
 function seleccionarMascotaJugador() {
-    let inputHipodoge = document.getElementById('hipodoge');
-    let inputCapipepo = document.getElementById('capipepo');
-    let inputRatigueya = document.getElementById('ratigueya');
+    let mascotaSeleccionada = '';
+    const mascotas = document.querySelectorAll('input[type=radio]');
+    let btnMascotaJugador = document.getElementById('btnMascota');
     let spanMascotaJugador = document.getElementById('mascotaJugador');
+    let spanNombreMascota = document.getElementById('nombreMascota');
 
-    if (inputHipodoge.checked) {
-        alert('Seleccionaste a Hipodoge');
-        spanMascotaJugador.innerText = 'Hipodoge';
-    } else if (inputCapipepo.checked) {
-        alert('Seleccionaste a Capipepo');
-        spanMascotaJugador.innerText = 'Capipepo';
-    } else if (inputRatigueya.checked) {
-        alert('Seleccionaste a Ratigueya');
-        spanMascotaJugador.innerText = 'Ratigueya';
+    for (let mascota of mascotas) {
+        if (mascota.checked) {
+            mascotaSeleccionada = primerLetraMayuscula(mascota.id);
+        }
+    }
+
+    if (!(mascotaSeleccionada == '')) {
+        spanNombreMascota.innerHTML = mascotaSeleccionada;
+        spanMascotaJugador.innerText = mascotaSeleccionada;
     } else {
-        alert('Selecciona una mascota');
+        spanNombreMascota.innerHTML = '(Selecciona tu mascota)';
     }
 
     if (!(spanMascotaJugador.innerText == '')) {
         seleccionarMascotaEnemigo();
+        btnMascotaJugador.disabled = true;
         return (executed = true);
     }
 
@@ -151,6 +158,14 @@ function crearMensaje(resultado) {
 
 // FUNCIÓN PARA MOSTRAR MENSAJE FINAL
 function crearMensajeFinal(resultadoFinal) {
+    let btnFuego = document.getElementById('btnFuego');
+    let btnAgua = document.getElementById('btnAgua');
+    let btnTierra = document.getElementById('btnTierra');
+
+    btnFuego.disabled = true;
+    btnAgua.disabled = true;
+    btnTierra.disabled = true;
+
     let mostrarMensaje = document.getElementById('mostrarMensaje');
 
     let parrafo = document.createElement('p');
@@ -162,6 +177,11 @@ function crearMensajeFinal(resultadoFinal) {
 // FUNCIÓN PARA NÚMERO ALEATORIO
 function aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
+}
+
+// FUNCIÓN PARA CAPITALIZAR UNA PALABRA
+function primerLetraMayuscula(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
 }
 
 // EVENTO PARA INICIAR EL JUEGO CUANDO CARGUE EL DOM
