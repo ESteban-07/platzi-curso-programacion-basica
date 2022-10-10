@@ -8,54 +8,84 @@
         <script src="./js/mokepon.js"></script>
         <link rel="stylesheet" href="./styles.css" />
     </head>
+
     <body>
         <main>
             <h1 class="titulo-primario">⚔️ Mok&eacute;pon ⚔️</h1>
 
-        <section id="seleccionar-mascota">
-            <h2 class="titulo-secundario">Elige a tu mascota: <span id="nombre-mascota"></span></h2>
+            <section id="seleccionar-mascota">
+                <h2 class="titulo-secundario">
+                    Elige a tu mascota: <span id="nombre-mascota"></span>
+                </h2>
 
-            <!-- MASCOTAS -->
-            <input type="radio" name="mascota" id="hipodoge" />
-            <label for="hipodoge">Hipodoge</label>
+                <!-- MASCOTAS -->
+                <input type="radio" name="mascota" id="hipodoge" />
+                <label for="hipodoge">Hipodoge</label>
 
-            <input type="radio" name="mascota" id="capipepo" />
-            <label for="capipepo">Capipepo</label>
+                <input type="radio" name="mascota" id="capipepo" />
+                <label for="capipepo">Capipepo</label>
 
-            <input type="radio" name="mascota" id="ratigueya" />
-            <label for="ratigueya">Ratigueya</label>
+                <input type="radio" name="mascota" id="ratigueya" />
+                <label for="ratigueya">Ratigueya</label>
 
-            <button id="boton-mascota" class="btn-mascota">Seleccionar</button>
-        </section>
+                <button id="boton-mascota" class="btn-mascota">
+                    Seleccionar
+                </button>
+            </section>
 
-        <section id="seleccionar-ataque">
-            <h2 class="titulo-secundario">Elige tu ataque:</h2>
+            <section id="seleccionar-ataque">
+                <h2 class="titulo-secundario">Elige tu ataque:</h2>
 
-            <p class="seccion-btns">
-                <button id="boton-fuego" class="btn-ataque">Fuego 🔥</button>
-                <button id="boton-agua" class="btn-ataque">Agua 💧</button>
-                <button id="boton-tierra" class="btn-ataque">Tierra 🌱</button>
-            </p>
+                <p class="seccion-btns">
+                    <button id="boton-fuego" class="btn-ataque">
+                        Fuego 🔥
+                    </button>
+                    <button id="boton-agua" class="btn-ataque">Agua 💧</button>
+                    <button id="boton-tierra" class="btn-ataque">
+                        Tierra 🌱
+                    </button>
+                </p>
 
-            <div class="estadisticas">
-                <div class="estado">
-                    <p>T&uacute;: <span id="mascota-jugador"></span></p>
-                    <p>Vidas: <span id="vidas-jugador">3</span></p>
-                </div>
-                <div class="estado">
-                    <p>Enemigo: <span id="mascota-enemigo"></span></p>
-                    <p>Vidas: <span id="vidas-enemigo">3</span></p>
-                </div>
-            </div>
+                <!-- <div class="estadisticas">
+                    <div class="estado">
+                        <p>T&uacute;: <span id="mascota-jugador"></span></p>
+                        <p>Vidas: <span id="vidas-jugador">3</span></p>
+                    </div>
+                    <div class="estado">
+                        <p>Enemigo: <span id="mascota-enemigo"></span></p>
+                        <p>Vidas: <span id="vidas-enemigo">3</span></p>
+                    </div>
+                </div> -->
+            </section>
 
-            
-        </section>
+            <!-- TABLERO DEL JUEGO -->
+            <table class="tg">
+                <thead>
+                    <tr>
+                        <th class="tg-0pky" colspan="2">
+                            MASCOTA JUGADOR VS MASCOTA ENEMIGO
+                        </th>
+                    </tr>
+                </thead>
+                <tbody id="contenedor-mensaje">
+                    <tr>
+                        <td class="tg-0pky">
+                            <p>Nombre: <span id="mascota-jugador"></span></p>
+                            <p>Vidas: <span id="vidas-jugador"></span></p>
+                        </td>
+                        <td class="tg-0pky">
+                            <p>Nombre: <span id="mascota-enemigo"></span></p>
+                            <p>Vidas: <span id="vidas-enemigo"></span></p>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
 
-        <section id="mostrar-mensaje"></section>
-
-        <section id="reiniciar-juego">
-            <button id="boton-reiniciar" class="btn-reiniciar">Reiniciar</button>
-        </section>
-    </body>
+            <section id="reiniciar-juego">
+                <button id="boton-reiniciar" class="btn-reiniciar">
+                    Reiniciar
+                </button>
+            </section>
         </main>
+    </body>
 </html>

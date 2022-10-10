@@ -56,6 +56,9 @@ function iniciarJuego() {
 
 // FUNCIONES PARA MASCOTAS
 function seleccionarMascotaJugador() {
+    let spanVidasJugador = document.getElementById('vidas-jugador');
+    let spanVidasEnemigo = document.getElementById('vidas-enemigo');
+
     let mascotaSeleccionada = '';
     const mascotas = document.querySelectorAll('input[type="radio"]');
     let btnMascotaJugador = document.getElementById('boton-mascota');
@@ -71,6 +74,10 @@ function seleccionarMascotaJugador() {
     if (!(mascotaSeleccionada == '')) {
         spanNombreMascota.innerHTML = mascotaSeleccionada;
         spanMascotaJugador.innerText = mascotaSeleccionada;
+
+        // INICIALIZANDO VIDAS
+        spanVidasJugador.innerText = '3';
+        spanVidasEnemigo.innerText = '3';
 
         // OCULTA SECCION SELECCIONAR MASCOTA
         // let seccionMascota = document.getElementById('seleccionar-mascota');
@@ -164,12 +171,19 @@ function revisarVidas() {
 
 // FUNCIÓN PARA CREAR MENSAJES
 function crearMensaje(resultado) {
-    let mostrarMensaje = document.getElementById('mostrar-mensaje');
+    let contenedorMensaje = document.getElementById('contenedor-mensaje');
+    let nuevaFila = document.createElement('tr');
 
-    let parrafo = document.createElement('p');
-    parrafo.innerHTML = `${ataqueJugador} ⚔️ VS ⚔️ ${ataqueEnemigo} - ${resultado}`;
+    nuevaFila.innerHTML = `<td class="tg-0pky" colspan="2">${ataqueJugador} ⚔️ ${ataqueEnemigo} - ${resultado}</td>`;
 
-    mostrarMensaje.appendChild(parrafo);
+    contenedorMensaje.appendChild(nuevaFila);
+
+    // let mostrarMensaje = document.getElementById('mostrar-mensaje');
+
+    // let parrafo = document.createElement('p');
+    // parrafo.innerHTML = `${ataqueJugador} ⚔️ ${ataqueEnemigo} - ${resultado}`;
+
+    // mostrarMensaje.appendChild(parrafo);
 }
 
 // FUNCIÓN PARA MOSTRAR MENSAJE FINAL
@@ -182,15 +196,15 @@ function crearMensajeFinal(resultadoFinal) {
     btnAgua.disabled = true;
     btnTierra.disabled = true;
 
-    let mostrarMensaje = document.getElementById('mostrar-mensaje');
+    // let mostrarMensaje = document.getElementById('mostrar-mensaje');
 
-    let parrafo = document.createElement('p');
-    parrafo.innerHTML = `${resultadoFinal}`;
+    // let parrafo = document.createElement('p');
+    // parrafo.innerHTML = `${resultadoFinal}`;
 
-    mostrarMensaje.appendChild(parrafo);
+    // mostrarMensaje.appendChild(parrafo);
 
-    let btnReiniciarJuego = document.getElementById('boton-reiniciar');
-    btnReiniciarJuego.style.display = 'block';
+    // let btnReiniciarJuego = document.getElementById('boton-reiniciar');
+    // btnReiniciarJuego.style.display = 'block';
 }
 
 // FUNCIÓN PARA NÚMERO ALEATORIO
