@@ -13,8 +13,8 @@ function iniciarJuego() {
     mostrarNombreMascota();
 
     // OCULTAR SECCION DE ATAQUES
-    let seccionAtaques = document.getElementById('seleccionar-ataque');
-    seccionAtaques.style.display = 'none';
+    // let seccionAtaques = document.getElementById('seleccionar-ataque');
+    // seccionAtaques.style.display = 'none';
 
     let btnFuego = document.getElementById('boton-fuego');
     let btnAgua = document.getElementById('boton-agua');
@@ -47,7 +47,9 @@ function iniciarJuego() {
     });
 
     let btnReiniciarJuego = document.getElementById('boton-reiniciar');
-    btnReiniciarJuego.style.display = 'none';
+
+    // OCULTANDO BOTON DE REINICIAR JUEGO
+    // btnReiniciarJuego.style.display = 'none';
 
     btnReiniciarJuego.addEventListener('click', () => location.reload());
 }
@@ -71,8 +73,8 @@ function seleccionarMascotaJugador() {
         spanMascotaJugador.innerText = mascotaSeleccionada;
 
         // OCULTA SECCION SELECCIONAR MASCOTA
-        let seccionMascota = document.getElementById('seleccionar-mascota');
-        seccionMascota.style.display = 'none';
+        // let seccionMascota = document.getElementById('seleccionar-mascota');
+        // seccionMascota.style.display = 'none';
     } else {
         spanNombreMascota.innerHTML = '(Selecciona tu mascota)';
     }
@@ -165,7 +167,7 @@ function crearMensaje(resultado) {
     let mostrarMensaje = document.getElementById('mostrar-mensaje');
 
     let parrafo = document.createElement('p');
-    parrafo.innerHTML = `Tu mascota atacó con ${ataqueJugador}, la mascota del enemigo atacó con ${ataqueEnemigo} - ${resultado}`;
+    parrafo.innerHTML = `${ataqueJugador} ⚔️ VS ⚔️ ${ataqueEnemigo} - ${resultado}`;
 
     mostrarMensaje.appendChild(parrafo);
 }
