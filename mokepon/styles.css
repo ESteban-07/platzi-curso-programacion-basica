@@ -7,6 +7,7 @@
 }
 
 body {
+    overflow-y: scroll;
     font-family: 'Roboto', sans-serif;
     text-align: center;
     background-color: #387f81;
@@ -48,7 +49,6 @@ main {
     display: flex;
     column-gap: 15px;
     justify-content: center;
-    margin-bottom: 30px;
 }
 
 .btn-ataque,
@@ -66,13 +66,15 @@ main {
 
 /* TABLERO DEL JUEGO */
 .tg {
+    color: #000000;
+    background-color: #ffffff;
     border-collapse: collapse;
     border-spacing: 0;
 }
 .tg td {
-    border-color: black;
+    border-color: #f38630;
     border-style: solid;
-    border-width: 1px;
+    border-width: 2px;
     font-family: Arial, sans-serif;
     font-size: 14px;
     overflow: hidden;
@@ -80,9 +82,9 @@ main {
     word-break: normal;
 }
 .tg th {
-    border-color: black;
+    border-color: #f38630;
     border-style: solid;
-    border-width: 1px;
+    border-width: 2px;
     font-family: Arial, sans-serif;
     font-size: 14px;
     font-weight: normal;
@@ -91,7 +93,6 @@ main {
     word-break: normal;
 }
 .tg .tg-0pky {
-    border-color: inherit;
     text-align: left;
     vertical-align: top;
 }

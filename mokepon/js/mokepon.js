@@ -5,6 +5,9 @@ let vidasJugador = 3;
 let vidasEnemigo = 3;
 const ataques = ['FUEGO 🔥', 'AGUA 💧', 'TIERRA 🌱'];
 
+// VARIABLE PARA CONTAR LOS COMBATES
+let contador = 1;
+
 // VARIABLE TIPO BOLEANA QUE VERIFICA SI LA FUNCIÓN INDICADA FUE EJECUTADA O NO
 let executed = false;
 
@@ -109,22 +112,38 @@ function seleccionarMascotaEnemigo() {
         // Ratigueya
         spanMascotaEnemigo.innerHTML = 'Ratigueya';
     }
+
+    // DESHABILITANDO RADIO BOTONES
+    let radioBotones = document.querySelectorAll('input[type="radio"]');
+    radioBotones.forEach((radio) => {
+        if (!radio.checked) {
+            radio.disabled = true;
+        }
+    });
 }
 
 // FUNCIONES PARA ATAQUES
 function ataqueFuego() {
     ataqueJugador = ataques[0];
     ataqueAleatorioEnemigo();
+    incrementar();
 }
 
 function ataqueAgua() {
     ataqueJugador = ataques[1];
     ataqueAleatorioEnemigo();
+    incrementar();
 }
 
 function ataqueTierra() {
     ataqueJugador = ataques[2];
     ataqueAleatorioEnemigo();
+    incrementar();
+}
+
+// CONTADOR DE COMBATES
+function incrementar() {
+    return contador++;
 }
 
 function ataqueAleatorioEnemigo() {
@@ -142,17 +161,17 @@ function combate() {
     let spanVidasEnemigo = document.getElementById('vidas-enemigo');
 
     if (ataqueJugador == ataqueEnemigo) {
-        crearMensaje('EMPATASTE 🤔❗');
+        crearMensaje('EMPATASTE ❗');
     } else if (
         (ataqueJugador == 'FUEGO 🔥' && ataqueEnemigo == 'TIERRA 🌱') ||
         (ataqueJugador == 'AGUA 💧' && ataqueEnemigo == 'FUEGO 🔥') ||
         (ataqueJugador == 'TIERRA 🌱' && ataqueEnemigo == 'AGUA 💧')
     ) {
-        crearMensaje('GANASTE 😆🎉');
+        crearMensaje('GANASTE 🎉');
         vidasEnemigo--;
         spanVidasEnemigo.innerHTML = `${vidasEnemigo}`;
     } else {
-        crearMensaje('PERDISTE 😢👎');
+        crearMensaje('PERDISTE 👎');
         vidasJugador--;
         spanVidasJugador.innerHTML = `${vidasJugador}`;
     }
@@ -174,16 +193,9 @@ function crearMensaje(resultado) {
     let contenedorMensaje = document.getElementById('contenedor-mensaje');
     let nuevaFila = document.createElement('tr');
 
-    nuevaFila.innerHTML = `<td class="tg-0pky" colspan="2">${ataqueJugador} ⚔️ ${ataqueEnemigo} - ${resultado}</td>`;
+    nuevaFila.innerHTML = `<td class="tg-0pky" colspan="2">${contador}. ${ataqueJugador} ⚔️ ${ataqueEnemigo} - ${resultado}</td>`;
 
     contenedorMensaje.appendChild(nuevaFila);
-
-    // let mostrarMensaje = document.getElementById('mostrar-mensaje');
-
-    // let parrafo = document.createElement('p');
-    // parrafo.innerHTML = `${ataqueJugador} ⚔️ ${ataqueEnemigo} - ${resultado}`;
-
-    // mostrarMensaje.appendChild(parrafo);
 }
 
 // FUNCIÓN PARA MOSTRAR MENSAJE FINAL
@@ -195,6 +207,10 @@ function crearMensajeFinal(resultadoFinal) {
     btnFuego.disabled = true;
     btnAgua.disabled = true;
     btnTierra.disabled = true;
+
+    setTimeout(() => {
+        console.log(resultadoFinal);
+    }, '2000');
 
     // let mostrarMensaje = document.getElementById('mostrar-mensaje');
 
