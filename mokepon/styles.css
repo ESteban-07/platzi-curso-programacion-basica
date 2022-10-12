@@ -96,3 +96,74 @@ main {
     text-align: left;
     vertical-align: top;
 }
+
+/* ESTILOS DEL MODAL */
+.modal-container {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.35s ease-in;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+.modal-container.is-visible {
+    visibility: visible;
+    opacity: 1;
+}
+
+.modal-dialog {
+    position: relative;
+    width: 370px;
+    max-height: max-content;
+    background-color: #387f81;
+    color: #ffffff;
+    box-shadow: 2px 0px 13px 15px rgba(0, 0, 0, 0.35);
+    border-radius: 8px;
+    padding: 50px 30px;
+}
+
+.verde {
+    background-color: #387f81;
+}
+
+.rojo {
+    background-color: #e96c54;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    cursor: pointer;
+    background: transparent;
+    color: #000;
+    background-color: #fff;
+    padding: 2px 3px;
+    border-radius: 2px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.close-modal:hover {
+    color: red;
+    border-color: red;
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 40px;
+}
+
+.reiniciar-juego {
+    width: fit-content;
+    padding: 5px 15px;
+    border-radius: 3px;
+    cursor: pointer;
+}

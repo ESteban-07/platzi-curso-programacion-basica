@@ -182,9 +182,9 @@ function combate() {
 // REVISAR VIDAS DESPUES DE CADA COMBATE
 function revisarVidas() {
     if (vidasEnemigo == 0) {
-        crearMensajeFinal('GANASTE EL COMBATE 😀');
+        crearMensajeFinal('HAS GANADO, ENHORABUENA 🥳', 'verde');
     } else if (vidasJugador == 0) {
-        crearMensajeFinal('PERDISTE EL COMBATE 😪');
+        crearMensajeFinal('HAS PERDIDO... 😪', 'rojo');
     }
 }
 
@@ -199,7 +199,7 @@ function crearMensaje(resultado) {
 }
 
 // FUNCIÓN PARA MOSTRAR MENSAJE FINAL
-function crearMensajeFinal(resultadoFinal) {
+function crearMensajeFinal(resultadoFinal, color) {
     let btnFuego = document.getElementById('boton-fuego');
     let btnAgua = document.getElementById('boton-agua');
     let btnTierra = document.getElementById('boton-tierra');
@@ -208,19 +208,20 @@ function crearMensajeFinal(resultadoFinal) {
     btnAgua.disabled = true;
     btnTierra.disabled = true;
 
+    const modal = document.getElementById('modal');
+    let contenedorModal = document.getElementById('modal-wrapper');
+    const btnCerrarModal = document.querySelector('[data-close]');
+    const resultado = document.getElementById('resultado');
+    resultado.innerText = resultadoFinal;
+    contenedorModal.classList.add(`${color}`);
+
     setTimeout(() => {
-        console.log(resultadoFinal);
-    }, '2000');
+        modal.classList.add('is-visible');
+    }, '1000');
 
-    // let mostrarMensaje = document.getElementById('mostrar-mensaje');
-
-    // let parrafo = document.createElement('p');
-    // parrafo.innerHTML = `${resultadoFinal}`;
-
-    // mostrarMensaje.appendChild(parrafo);
-
-    // let btnReiniciarJuego = document.getElementById('boton-reiniciar');
-    // btnReiniciarJuego.style.display = 'block';
+    btnCerrarModal.addEventListener('click', () => {
+        return modal.classList.remove('is-visible');
+    });
 }
 
 // FUNCIÓN PARA NÚMERO ALEATORIO

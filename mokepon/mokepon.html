@@ -69,6 +69,32 @@
                 <tbody id="contenedor-mensaje"></tbody>
             </table>
 
+            <!-- MODAL DEL RESULTADO -->
+            <div
+                class="modal-container"
+                id="modal"
+                data-animation="slideInOutLeft"
+            >
+                <div class="modal-dialog" id="modal-wrapper">
+                    <button
+                        class="close-modal"
+                        aria-label="close modal"
+                        data-close
+                    >
+                        X
+                    </button>
+                    <section class="modal-content">
+                        <h3 id="resultado">HAS GANADO, ENHORABUENA 🥳</h3>
+                        <button
+                            class="reiniciar-juego"
+                            onclick="location.reload()"
+                        >
+                            ⚔️ JUGAR DE NUEVO ⚔️
+                        </button>
+                    </section>
+                </div>
+            </div>
+
             <section id="reiniciar-juego">
                 <button id="boton-reiniciar" class="btn-reiniciar">
                     Reiniciar
