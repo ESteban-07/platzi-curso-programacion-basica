@@ -34,7 +34,7 @@ function iniciarJuego() {
         if (executed) {
             // OCULTA SECCION DE ATAQUES
             let seccionAtaques = document.getElementById('seleccionar-ataque');
-            seccionAtaques.style.display = 'block';
+            seccionAtaques.style.display = 'flex';
 
             btnFuego.disabled = false;
             btnAgua.disabled = false;

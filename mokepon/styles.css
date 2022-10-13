@@ -7,16 +7,14 @@
 }
 
 body {
+    padding: 30px;
     font-family: 'Poppins', sans-serif;
     background-color: #041562;
 }
 
 #seleccionar-mascota {
-    width: 100vw;
-    min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     row-gap: 30px;
 }
@@ -69,16 +67,28 @@ input {
     display: none;
 }
 
-/* mediaqueries */
-/* 
-body {
-    padding: 10px;
-} 
+#seleccionar-ataque {
+    flex-direction: column;
+    align-items: center;
+    row-gap: 30px;
+}
 
-.tarjetas {
+.boton-de-ataque {
+    background-color: #11468f;
+    padding: 10px;
+    border-radius: 20px;
+    border-color: transparent;
+    width: 100px;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+}
+
+/* mediaqueries */
+
+/* .tarjetas {
     display: flex;
     flex-direction: column;
     gap: 10px;
-}
-
-*/
+} */
