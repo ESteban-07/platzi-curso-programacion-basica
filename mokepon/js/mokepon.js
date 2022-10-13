@@ -1,4 +1,4 @@
-// VARIABLE GLOBAL
+// VARIABLES GLOBALES
 let ataqueJugador;
 let ataqueEnemigo;
 let vidasJugador = 3;
@@ -149,6 +149,7 @@ function crearMensaje(resultado) {
 
 // FUNCIÓN PARA MOSTRAR MENSAJE FINAL
 function crearMensajeFinal(resultadoFinal) {
+    // DESHABILITANDO BOTONES DE ATAQUE
     let btnFuego = document.getElementById('boton-fuego');
     let btnAgua = document.getElementById('boton-agua');
     let btnTierra = document.getElementById('boton-tierra');
