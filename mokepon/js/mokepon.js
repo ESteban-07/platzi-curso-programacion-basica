@@ -10,95 +10,67 @@ let executed = false;
 
 // FUNCIÓN PARA INCIAR EL JUEGO
 function iniciarJuego() {
-    mostrarNombreMascota();
-
     // OCULTAR SECCION DE ATAQUES
     let seccionAtaques = document.getElementById('seleccionar-ataque');
     seccionAtaques.style.display = 'none';
 
-    let btnFuego = document.getElementById('boton-fuego');
-    let btnAgua = document.getElementById('boton-agua');
-    let btnTierra = document.getElementById('boton-tierra');
-
-    // DESHABILITANDO LOS BOTONES DE COMBATE
-    btnFuego.disabled = true;
-    btnAgua.disabled = true;
-    btnTierra.disabled = true;
-
+    // EVENTO DEL BOTON SELECCIONAR MASCOTA JUGADOR
     let btnMascotaJugador = document.getElementById('boton-mascota');
 
     btnMascotaJugador.addEventListener('click', () => {
         seleccionarMascotaJugador();
 
-        // VALIDANDO QUE LA FUNCIÓN SE HA EJECUTADO PARA HABILITAR LOS BOTONES DE COMBATE
+        // SI UNA MASCOTA FUE SELECCIONADA Y EL USUARIO APRETÓ EL BOTÓN
         if (executed) {
-            // OCULTA SECCION DE ATAQUES
+            // DESPLEGANDO LA SECCION DE ATAQUES
             let seccionAtaques = document.getElementById('seleccionar-ataque');
             seccionAtaques.style.display = 'flex';
-
-            btnFuego.disabled = false;
-            btnAgua.disabled = false;
-            btnTierra.disabled = false;
-
-            btnFuego.addEventListener('click', ataqueFuego);
-            btnAgua.addEventListener('click', ataqueAgua);
-            btnTierra.addEventListener('click', ataqueTierra);
         }
     });
 
-    btnReiniciarJuego = document.getElementById('boton-reiniciar');
+    let btnFuego = document.getElementById('boton-fuego');
+    let btnAgua = document.getElementById('boton-agua');
+    let btnTierra = document.getElementById('boton-tierra');
+
+    btnFuego.addEventListener('click', ataqueFuego);
+    btnAgua.addEventListener('click', ataqueAgua);
+    btnTierra.addEventListener('click', ataqueTierra);
+
+    let btnReiniciarJuego = document.getElementById('boton-reiniciar');
 
     btnReiniciarJuego.addEventListener('click', () => location.reload());
 }
 
 // FUNCIONES PARA MASCOTAS
 function seleccionarMascotaJugador() {
-    let mascotaSeleccionada = '';
-    const mascotas = document.querySelectorAll('input[type="radio"]');
-    let btnMascotaJugador = document.getElementById('boton-mascota');
+    let mascotas = document.querySelectorAll('input[type="radio"]');
     let spanMascotaJugador = document.getElementById('mascota-jugador');
-    let spanNombreMascota = document.getElementById('nombre-mascota');
 
     for (let mascota of mascotas) {
         if (mascota.checked) {
-            mascotaSeleccionada = primerLetraMayuscula(mascota.id);
+            spanMascotaJugador.innerText = primerLetraMayuscula(mascota.id);
+
+            // OCULTA SECCION SELECCIONAR MASCOTA
+            let seccionMascota = document.getElementById('seleccionar-mascota');
+            seccionMascota.style.display = 'none';
+
+            executed = true;
         }
     }
 
-    if (!(mascotaSeleccionada == '')) {
-        spanNombreMascota.innerHTML = mascotaSeleccionada;
-        spanMascotaJugador.innerText = mascotaSeleccionada;
-
-        // OCULTA SECCION SELECCIONAR MASCOTA
-        let seccionMascota = document.getElementById('seleccionar-mascota');
-        seccionMascota.style.display = 'none';
-    } else {
-        spanNombreMascota.innerHTML = '(Selecciona tu mascota)';
-    }
-
-    if (!(spanMascotaJugador.innerText == '')) {
-        seleccionarMascotaEnemigo();
-        btnMascotaJugador.disabled = true;
-        return (executed = true);
-    }
-
-    return (executed = false);
+    seleccionarMascotaEnemigo();
 }
 
 function seleccionarMascotaEnemigo() {
-    let mascotaAleatoria = aleatorio(1, 3);
+    let mascotaAleatoria = aleatorio(0, 2);
     let spanMascotaEnemigo = document.getElementById('mascota-enemigo');
+    let mascotas = document.querySelectorAll('input[type="radio"]');
 
-    if (mascotaAleatoria == 1) {
-        // Hipodoge
-        spanMascotaEnemigo.innerHTML = 'Hipodoge';
-    } else if (mascotaAleatoria == 2) {
-        // Capipepo
-        spanMascotaEnemigo.innerHTML = 'Capipepo';
-    } else {
-        // Ratigueya
-        spanMascotaEnemigo.innerHTML = 'Ratigueya';
-    }
+    let nombreMascotaEnemiga = primerLetraMayuscula(
+        mascotas[mascotaAleatoria].id
+    );
+
+    spanMascotaEnemigo.innerHTML = nombreMascotaEnemiga;
 }
 
 // FUNCIONES PARA ATAQUES
@@ -198,18 +170,6 @@ function aleatorio(min, max) {
 // FUNCIÓN PARA CAPITALIZAR UNA PALABRA
 function primerLetraMayuscula(string) {
     return string.charAt(0).toUpperCase() + string.slice(1);
-}
-
-function mostrarNombreMascota() {
-    let mascotas = document.querySelectorAll('input[type="radio"]');
-    let spanNombreMascota = document.getElementById('nombre-mascota');
-
-    mascotas.forEach((mascota) => {
-        mascota.addEventListener('click', (e) => {
-            let idMascota = e.currentTarget.id;
-            spanNombreMascota.innerHTML = primerLetraMayuscula(idMascota);
-        });
-    });
 }
 
 // EVENTO PARA INICIAR EL JUEGO CUANDO CARGUE EL DOM
