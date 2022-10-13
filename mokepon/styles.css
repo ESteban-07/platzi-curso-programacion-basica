@@ -103,6 +103,13 @@ input {
     color: #11468f;
 }
 
+.tablero-juego {
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    column-gap: 20px;
+    text-align: center;
+}
+
 /* mediaqueries */
 
 /* .tarjetas {
