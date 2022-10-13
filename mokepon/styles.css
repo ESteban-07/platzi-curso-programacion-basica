@@ -121,6 +121,11 @@ input {
     color: white;
 }
 
+#vidas-jugador,
+#vidas-enemigo {
+    font-size: 28px;
+}
+
 /* RESPONSIVE DESIGN */
 
 @media screen and (max-width: 575px) {
