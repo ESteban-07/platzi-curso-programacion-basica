@@ -52,10 +52,19 @@ button {
     border-radius: 20px;
     justify-content: center;
     align-items: center;
+    transition: all 0.3s linear;
 }
 
 .tarjeta-de-mokepon img {
     width: 80px;
+}
+
+input:checked + label {
+    background-color: #5d8bf4;
+}
+
+input {
+    display: none;
 }
 
 #boton-mascota {
@@ -65,10 +74,6 @@ button {
     background: transparent;
     border: 2px solid #fff;
     color: white;
-}
-
-input {
-    display: none;
 }
 
 #seleccionar-ataque {
@@ -113,6 +118,7 @@ input {
     grid-template-columns: repeat(2, 100px);
     column-gap: 20px;
     text-align: center;
+    color: white;
 }
 
 /* RESPONSIVE DESIGN */
