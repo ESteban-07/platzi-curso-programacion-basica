@@ -46,8 +46,7 @@ function iniciarJuego() {
         }
     });
 
-    let btnReiniciarJuego = document.getElementById('boton-reiniciar');
-    btnReiniciarJuego.style.display = 'none';
+    btnReiniciarJuego = document.getElementById('boton-reiniciar');
 
     btnReiniciarJuego.addEventListener('click', () => location.reload());
 }
@@ -162,12 +161,18 @@ function revisarVidas() {
 
 // FUNCIÓN PARA CREAR MENSAJES
 function crearMensaje(resultado) {
-    let mostrarMensaje = document.getElementById('mostrar-mensaje');
+    let mostrarMensaje = document.getElementById('resultado');
+    let ataquesJugador = document.getElementById('ataques-jugador');
+    let ataquesEnemigo = document.getElementById('ataques-enemigo');
+    let nuevoAtaqueJugador = document.createElement('p');
+    let nuevoAtaqueEnemigo = document.createElement('p');
 
-    let parrafo = document.createElement('p');
-    parrafo.innerHTML = `Tu mascota atacó con ${ataqueJugador}, la mascota del enemigo atacó con ${ataqueEnemigo} - ${resultado}`;
+    mostrarMensaje.innerText = resultado;
+    nuevoAtaqueJugador.innerText = ataqueJugador;
+    nuevoAtaqueEnemigo.innerText = ataqueEnemigo;
 
-    mostrarMensaje.appendChild(parrafo);
+    ataquesJugador.appendChild(nuevoAtaqueJugador);
+    ataquesEnemigo.appendChild(nuevoAtaqueEnemigo);
 }
 
 // FUNCIÓN PARA MOSTRAR MENSAJE FINAL
@@ -180,15 +185,9 @@ function crearMensajeFinal(resultadoFinal) {
     btnAgua.disabled = true;
     btnTierra.disabled = true;
 
-    let mostrarMensaje = document.getElementById('mostrar-mensaje');
+    let mostrarMensaje = document.getElementById('resultado');
 
-    let parrafo = document.createElement('p');
-    parrafo.innerHTML = `${resultadoFinal}`;
-
-    mostrarMensaje.appendChild(parrafo);
-
-    let btnReiniciarJuego = document.getElementById('boton-reiniciar');
-    btnReiniciarJuego.style.display = 'block';
+    mostrarMensaje.innerHTML = resultadoFinal;
 }
 
 // FUNCIÓN PARA NÚMERO ALEATORIO

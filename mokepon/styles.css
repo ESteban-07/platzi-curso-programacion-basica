@@ -12,6 +12,11 @@ body {
     background-color: #041562;
 }
 
+button {
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+}
+
 #seleccionar-mascota {
     display: flex;
     flex-direction: column;
@@ -60,7 +65,6 @@ body {
     background: transparent;
     border: 2px solid #fff;
     color: white;
-    font-family: 'Poppins', sans-serif;
 }
 
 input {
@@ -80,9 +84,23 @@ input {
     border-color: transparent;
     width: 100px;
     color: white;
-    cursor: pointer;
     text-align: center;
-    font-family: 'Poppins', sans-serif;
+}
+
+#mostrar-mensaje {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 10px;
+    background-color: #eeeeee;
+    width: 280px;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+#boton-reiniciar {
+    border: none;
+    color: #11468f;
 }
 
 /* mediaqueries */
