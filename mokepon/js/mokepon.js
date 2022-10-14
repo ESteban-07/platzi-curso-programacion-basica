@@ -19,6 +19,7 @@ const spanVidasEnemigo = document.getElementById('vidas-enemigo');
 const ataquesJugador = document.getElementById('ataques-jugador');
 const ataquesEnemigo = document.getElementById('ataques-enemigo');
 
+let mokepones = [];
 let ataqueJugador;
 let ataqueEnemigo;
 let vidasJugador = 3;
@@ -55,6 +56,8 @@ let ratigueya = new Mokepon(
     './assets/mokepons_mokepon_ratigueya_attack.png',
     5
 );
+
+mokepones.push(hipodoge, capipepo, ratigueya);
 
 // FUNCIÓN PARA INCIAR EL JUEGO
 function iniciarJuego() {
