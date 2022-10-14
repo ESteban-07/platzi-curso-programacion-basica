@@ -35,10 +35,11 @@ class Mokepon {
         this.nombre = nombre;
         this.imagen = imagen;
         this.vida = vida;
+        this.ataques = [];
     }
 }
 
-// OBJETOS DE LA CLASE MOKEPON
+// OBJETOS INSTANCIA DE LA CLASE MOKEPON
 let hipodoge = new Mokepon(
     'Hipodoge',
     './assets/mokepons_mokepon_hipodoge_attack.png',
@@ -57,7 +58,30 @@ let ratigueya = new Mokepon(
     5
 );
 
-mokepones.push(hipodoge, capipepo, ratigueya);
+// OBJETOS LITERALES CONSTRUIDOS SIN CLASES
+hipodoge.ataques.push(
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '🔥', id: 'boton-fuego' },
+    { nombre: '🌱', id: 'boton-tierra' }
+);
+
+capipepo.ataques.push(
+    { nombre: '🌱', id: 'boton-agua' },
+    { nombre: '🌱', id: 'boton-agua' },
+    { nombre: '🌱', id: 'boton-agua' },
+    { nombre: '💧', id: 'boton-fuego' },
+    { nombre: '🔥', id: 'boton-tierra' }
+);
+
+ratigueya.ataques.push(
+    { nombre: '🔥', id: 'boton-agua' },
+    { nombre: '🔥', id: 'boton-agua' },
+    { nombre: '🔥', id: 'boton-agua' },
+    { nombre: '💧', id: 'boton-fuego' },
+    { nombre: '🌱', id: 'boton-tierra' }
+);
 
 // FUNCIÓN PARA INCIAR EL JUEGO
 function iniciarJuego() {
