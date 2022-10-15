@@ -5,8 +5,6 @@ const btnAgua = document.getElementById('boton-agua');
 const btnTierra = document.getElementById('boton-tierra');
 const btnReiniciarJuego = document.getElementById('boton-reiniciar');
 
-const mascotas = document.querySelectorAll('input[type="radio"]');
-
 const mostrarMensaje = document.getElementById('resultado');
 
 const spanMascotaJugador = document.getElementById('mascota-jugador');
@@ -18,6 +16,7 @@ const spanVidasEnemigo = document.getElementById('vidas-enemigo');
 
 const ataquesJugador = document.getElementById('ataques-jugador');
 const ataquesEnemigo = document.getElementById('ataques-enemigo');
+const contenedorTarjetas = document.getElementById('contenedor-tarjetas');
 
 let mokepones = [];
 let ataqueJugador;
@@ -25,6 +24,8 @@ let ataqueEnemigo;
 let vidasJugador = 3;
 let vidasEnemigo = 3;
 const ataques = ['FUEGO 🔥', 'AGUA 💧', 'TIERRA 🌱'];
+let opcionDeMokepones;
+let mascotas;
 
 // VARIABLE TIPO BOLEANA QUE NOS PERMITE VALIDAR SI UNA MASCOTA FUE SELECCIONADA
 let mascotaSeleccionada = false;
@@ -83,10 +84,31 @@ ratigueya.ataques.push(
     { nombre: '🌱', id: 'boton-tierra' }
 );
 
+mokepones.push(hipodoge, capipepo, ratigueya);
+
 // FUNCIÓN PARA INCIAR EL JUEGO
 function iniciarJuego() {
     // OCULTAR SECCION DE ATAQUES
     seccionAtaques.style.display = 'none';
+
+    // INSERTANDO MASCOTAS DESDE JS AL HTML
+    mokepones.forEach((mokepon) => {
+        opcionDeMokepones = `
+        <input type="radio" name="mascota" id=${mokepon.nombre.toLowerCase()} />
+        <label class="tarjeta-de-mokepon" for=${mokepon.nombre.toLowerCase()}>
+            <p>${mokepon.nombre}</p>
+                <img
+                    src=${mokepon.imagen}
+                    alt=${mokepon.nombre}
+                />
+        </label>
+        `;
+
+        contenedorTarjetas.innerHTML += opcionDeMokepones;
+    });
+
+    // ALMACENANDO INPUT MASCOTAS UNA VEZ SE HALLAN CREADO EN EL HTML
+    mascotas = document.querySelectorAll('input[type="radio"]');
 
     // EVENTO DEL BOTON SELECCIONAR MASCOTA JUGADOR
     let btnMascotaJugador = document.getElementById('boton-mascota');
@@ -228,5 +250,5 @@ function reiniciarJuego() {
     return location.reload();
 }
 
-// EVENTO PARA INICIAR EL JUEGO CUANDO CARGUE EL DOM
+// EVENTO PARA INICIAR EL JUEGO CUANDO TODA LA PÁGINA CARGUE, INCLUYENDO ARCHIVOS DEPENDIENTES
 window.addEventListener('load', iniciarJuego);
