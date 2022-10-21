@@ -151,11 +151,9 @@ function seleccionarMascotaJugador() {
 }
 
 function seleccionarMascotaEnemigo() {
-    let mascotaAleatoria = aleatorio(0, 2);
+    let mascotaAleatoria = aleatorio(0, mokepones.length - 1);
 
-    let nombreMascotaEnemiga = nombreMascota(mascotas[mascotaAleatoria].id);
-
-    spanMascotaEnemigo.innerHTML = nombreMascotaEnemiga;
+    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre;
 }
 
 // FUNCIONES PARA ATAQUES
