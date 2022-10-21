@@ -105,10 +105,13 @@ function iniciarJuego() {
         `;
 
         contenedorTarjetas.innerHTML += opcionDeMokepones;
+
+        // UNA VEZ SE INYECTEN LOS MOKEPONES EN EL HTML, SUS INPUTS
+        // SERÁN ALMACENADOS EN LA VARIABLE 'MASCOTAS'
+        mascotas = document.querySelectorAll('input[type="radio"]');
     });
 
     // ALMACENANDO INPUT MASCOTAS UNA VEZ SE HALLAN CREADO EN EL HTML
-    mascotas = document.querySelectorAll('input[type="radio"]');
 
     // EVENTO DEL BOTON SELECCIONAR MASCOTA JUGADOR
     let btnMascotaJugador = document.getElementById('boton-mascota');
