@@ -30,6 +30,7 @@ let ataquesMokepon;
 let btnFuego;
 let btnAgua;
 let btnTierra;
+let botones;
 
 // VARIABLE TIPO BOLEANA QUE NOS PERMITE VALIDAR SI UNA MASCOTA FUE SELECCIONADA
 let mascotaSeleccionada = false;
@@ -123,8 +124,10 @@ function iniciarJuego() {
     btnMascotaJugador.addEventListener('click', () => {
         seleccionarMascotaJugador();
 
-        // SI UNA MASCOTA FUE SELECCIONADA Y EL USUARIO APRETÓ EL BOTÓN
+        // SI LA MASCOTA DEL JUGADOR FUE SELECCIONADA
         if (mascotaSeleccionada) {
+            seleccionarMascotaEnemigo();
+
             // DESPLEGANDO LA SECCION DE ATAQUES
             seccionAtaques.style.display = 'flex';
         }
@@ -148,8 +151,6 @@ function seleccionarMascotaJugador() {
             mascotaSeleccionada = true;
         }
     }
-
-    seleccionarMascotaEnemigo();
 }
 
 function extraerAtaques(mascotaJugador) {
@@ -166,7 +167,9 @@ function extraerAtaques(mascotaJugador) {
 
 function mostrarAtaques(ataques) {
     ataques.forEach((ataque) => {
-        ataquesMokepon = `<button id=${ataque.id} class="boton-de-ataque">${ataque.nombre}</button>`;
+        ataquesMokepon = `
+        <button id=${ataque.id} class="boton-de-ataque btnAtaque">${ataque.nombre}</button>
+        `;
 
         contenedorBotones.innerHTML += ataquesMokepon;
     });
@@ -175,15 +178,32 @@ function mostrarAtaques(ataques) {
     btnAgua = document.getElementById('boton-agua');
     btnTierra = document.getElementById('boton-tierra');
 
-    btnFuego.addEventListener('click', ataqueFuego);
-    btnAgua.addEventListener('click', ataqueAgua);
-    btnTierra.addEventListener('click', ataqueTierra);
+    botones = document.querySelectorAll('.btnAtaque');
+}
+
+function secuenciaAtaque() {
+    botones.forEach((boton) => {
+        boton.addEventListener('click', function (e) {
+            const id = e.currentTarget.id;
+            if (id == 'boton-fuego') {
+                ataqueFuego();
+            } else if (id == 'boton-agua') {
+                ataqueAgua();
+            } else if (id == 'boton-tierra') {
+                ataqueTierra();
+            }
+            e.currentTarget.style.background = '#30435d';
+            e.currentTarget.disabled = true;
+        });
+    });
 }
 
 function seleccionarMascotaEnemigo() {
     let mascotaAleatoria = aleatorio(0, mokepones.length - 1);
 
     spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre;
+
+    secuenciaAtaque();
 }
 
 // FUNCIONES PARA ATAQUES
@@ -256,11 +276,6 @@ function crearMensaje(resultado) {
 
 // FUNCIÓN PARA MOSTRAR MENSAJE FINAL
 function crearMensajeFinal(resultadoFinal) {
-    // DESHABILITANDO BOTONES DE ATAQUE
-    btnFuego.disabled = true;
-    btnAgua.disabled = true;
-    btnTierra.disabled = true;
-
     mostrarMensaje.innerHTML = resultadoFinal;
 }
 
