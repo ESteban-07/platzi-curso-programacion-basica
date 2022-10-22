@@ -23,10 +23,11 @@ let ataqueJugador;
 let ataqueEnemigo;
 let vidasJugador = 3;
 let vidasEnemigo = 3;
-const ataques = ['FUEGO 🔥', 'AGUA 💧', 'TIERRA 🌱'];
+const ataques = ['🔥', '💧', '🌱'];
 let mascotas;
 let opcionDeMokepones;
-let ataquesMokepon;
+let ataquesMokeponJugador;
+let ataquesMokeponEnemigo;
 let btnFuego;
 let btnAgua;
 let btnTierra;
@@ -167,11 +168,11 @@ function extraerAtaques(mascotaJugador) {
 
 function mostrarAtaques(ataques) {
     ataques.forEach((ataque) => {
-        ataquesMokepon = `
+        ataquesMokeponJugador = `
         <button id=${ataque.id} class="boton-de-ataque btnAtaque">${ataque.nombre}</button>
         `;
 
-        contenedorBotones.innerHTML += ataquesMokepon;
+        contenedorBotones.innerHTML += ataquesMokeponJugador;
     });
 
     btnFuego = document.getElementById('boton-fuego');
@@ -194,6 +195,7 @@ function secuenciaAtaque() {
             }
             e.currentTarget.style.background = '#30435d';
             e.currentTarget.disabled = true;
+            ataqueAleatorioEnemigo();
         });
     });
 }
@@ -203,28 +205,34 @@ function seleccionarMascotaEnemigo() {
 
     spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre;
 
+    ataquesMokeponEnemigo = mokepones[mascotaAleatoria].ataques.map(
+        (ataque) => {
+            return ataque.nombre;
+        }
+    );
+
     secuenciaAtaque();
 }
 
 // FUNCIONES PARA ATAQUES
 function ataqueFuego() {
     ataqueJugador = ataques[0];
-    ataqueAleatorioEnemigo();
 }
 
 function ataqueAgua() {
     ataqueJugador = ataques[1];
-    ataqueAleatorioEnemigo();
 }
 
 function ataqueTierra() {
     ataqueJugador = ataques[2];
-    ataqueAleatorioEnemigo();
 }
 
 function ataqueAleatorioEnemigo() {
-    let random = aleatorio(0, 2);
-    ataqueEnemigo = ataques[random];
+    let randomIndex = aleatorio(0, ataquesMokeponEnemigo.length - 1);
+
+    ataqueEnemigo = ataquesMokeponEnemigo[randomIndex];
+
+    ataquesMokeponEnemigo.splice(randomIndex, 1);
 
     // Invocamos la funcion de combate() y dentro de esta enviamos el resultado de la
     // batalla como argumento de la funcion crearMensaje() para mostrarlo en pantalla
@@ -236,9 +244,9 @@ function combate() {
     if (ataqueJugador == ataqueEnemigo) {
         crearMensaje('EMPATASTE 🤔❗');
     } else if (
-        (ataqueJugador == 'FUEGO 🔥' && ataqueEnemigo == 'TIERRA 🌱') ||
-        (ataqueJugador == 'AGUA 💧' && ataqueEnemigo == 'FUEGO 🔥') ||
-        (ataqueJugador == 'TIERRA 🌱' && ataqueEnemigo == 'AGUA 💧')
+        (ataqueJugador == '🔥' && ataqueEnemigo == '🌱') ||
+        (ataqueJugador == '💧' && ataqueEnemigo == '🔥') ||
+        (ataqueJugador == '🌱' && ataqueEnemigo == '💧')
     ) {
         crearMensaje('GANASTE 😆🎉');
         vidasEnemigo--;
