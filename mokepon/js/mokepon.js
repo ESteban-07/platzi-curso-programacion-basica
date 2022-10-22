@@ -1,8 +1,8 @@
 // VARIABLES GLOBALES
+const seccionMascota = document.getElementById('seleccionar-mascota');
 const seccionAtaques = document.getElementById('seleccionar-ataque');
-const btnFuego = document.getElementById('boton-fuego');
-const btnAgua = document.getElementById('boton-agua');
-const btnTierra = document.getElementById('boton-tierra');
+const contenedorBotones =
+    document.getElementsByClassName('contenedor-botones')[0];
 const btnReiniciarJuego = document.getElementById('boton-reiniciar');
 
 const mostrarMensaje = document.getElementById('resultado');
@@ -19,13 +19,17 @@ const ataquesEnemigo = document.getElementById('ataques-enemigo');
 const contenedorTarjetas = document.getElementById('contenedor-tarjetas');
 
 let mokepones = [];
+let mascotaJugador;
 let ataqueJugador;
 let ataqueEnemigo;
 let vidasJugador = 3;
 let vidasEnemigo = 3;
 const ataques = ['FUEGO 🔥', 'AGUA 💧', 'TIERRA 🌱'];
-let opcionDeMokepones;
 let mascotas;
+let opcionDeMokepones;
+let btnFuego;
+let btnAgua;
+let btnTierra;
 
 // VARIABLE TIPO BOLEANA QUE NOS PERMITE VALIDAR SI UNA MASCOTA FUE SELECCIONADA
 let mascotaSeleccionada = false;
@@ -94,8 +98,8 @@ function iniciarJuego() {
     // INSERTANDO MASCOTAS DESDE JS AL HTML
     mokepones.forEach((mokepon) => {
         opcionDeMokepones = `
-        <input type="radio" name="mascota" id=${mokepon.nombre.toLowerCase()} />
-        <label class="tarjeta-de-mokepon" for=${mokepon.nombre.toLowerCase()}>
+        <input type="radio" name="mascota" id=${mokepon.nombre} />
+        <label class="tarjeta-de-mokepon" for=${mokepon.nombre}>
             <p>${mokepon.nombre}</p>
                 <img
                     src=${mokepon.imagen}
@@ -126,9 +130,9 @@ function iniciarJuego() {
         }
     });
 
-    btnFuego.addEventListener('click', ataqueFuego);
-    btnAgua.addEventListener('click', ataqueAgua);
-    btnTierra.addEventListener('click', ataqueTierra);
+    // btnFuego.addEventListener('click', ataqueFuego);
+    // btnAgua.addEventListener('click', ataqueAgua);
+    // btnTierra.addEventListener('click', ataqueTierra);
 
     btnReiniciarJuego.addEventListener('click', reiniciarJuego);
 }
@@ -137,10 +141,12 @@ function iniciarJuego() {
 function seleccionarMascotaJugador() {
     for (let mascota of mascotas) {
         if (mascota.checked) {
-            spanMascotaJugador.innerText = nombreMascota(mascota.id);
+            mascotaJugador = mascota.id;
+            spanMascotaJugador.innerText = mascotaJugador;
+
+            extraerAtaques(mascotaJugador);
 
             // OCULTA SECCION SELECCIONAR MASCOTA
-            let seccionMascota = document.getElementById('seleccionar-mascota');
             seccionMascota.style.display = 'none';
 
             mascotaSeleccionada = true;
@@ -148,6 +154,28 @@ function seleccionarMascotaJugador() {
     }
 
     seleccionarMascotaEnemigo();
+}
+
+function extraerAtaques(mascotaJugador) {
+    let ataques;
+
+    mokepones.forEach((mokepon) => {
+        if (mokepon.nombre == mascotaJugador) {
+            ataques = mokepon.ataques;
+        }
+    });
+
+    mostrarAtaques(ataques);
+}
+
+function mostrarAtaques(ataques) {
+    let botonesDeAtaque;
+
+    ataques.forEach((ataque) => {
+        botonesDeAtaque = `<button id=${ataque.id} class="boton-de-ataque">${ataque.nombre}</button>`;
+
+        contenedorBotones.innerHTML += botonesDeAtaque;
+    });
 }
 
 function seleccionarMascotaEnemigo() {
@@ -237,13 +265,6 @@ function crearMensajeFinal(resultadoFinal) {
 // FUNCIÓN PARA NÚMERO ALEATORIO
 function aleatorio(min, max) {
     return Math.floor(Math.random() * (max - min + 1) + min);
-}
-
-// FUNCIÓN QUE RETORNA EL NOMBRE DE LA MÁSCOTA CON LA PRIMER LETRA MAYÚSCULA
-function nombreMascota(nombre) {
-    let nombreMayuscula = nombre.charAt(0).toUpperCase() + nombre.slice(1);
-
-    return nombreMayuscula;
 }
 
 // FUNCIÓN PARA REINICIAR EL JUEGO
