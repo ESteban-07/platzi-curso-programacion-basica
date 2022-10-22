@@ -1,8 +1,7 @@
 // VARIABLES GLOBALES
 const seccionMascota = document.getElementById('seleccionar-mascota');
 const seccionAtaques = document.getElementById('seleccionar-ataque');
-const contenedorBotones =
-    document.getElementsByClassName('contenedor-botones')[0];
+const contenedorBotones = document.getElementById('contenedor-botones');
 const btnReiniciarJuego = document.getElementById('boton-reiniciar');
 
 const mostrarMensaje = document.getElementById('resultado');
@@ -27,6 +26,7 @@ let vidasEnemigo = 3;
 const ataques = ['FUEGO 🔥', 'AGUA 💧', 'TIERRA 🌱'];
 let mascotas;
 let opcionDeMokepones;
+let ataquesMokepon;
 let btnFuego;
 let btnAgua;
 let btnTierra;
@@ -73,18 +73,18 @@ hipodoge.ataques.push(
 );
 
 capipepo.ataques.push(
-    { nombre: '🌱', id: 'boton-agua' },
-    { nombre: '🌱', id: 'boton-agua' },
-    { nombre: '🌱', id: 'boton-agua' },
-    { nombre: '💧', id: 'boton-fuego' },
-    { nombre: '🔥', id: 'boton-tierra' }
+    { nombre: '🌱', id: 'boton-tierra' },
+    { nombre: '🌱', id: 'boton-tierra' },
+    { nombre: '🌱', id: 'boton-tierra' },
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '🔥', id: 'boton-fuego' }
 );
 
 ratigueya.ataques.push(
-    { nombre: '🔥', id: 'boton-agua' },
-    { nombre: '🔥', id: 'boton-agua' },
-    { nombre: '🔥', id: 'boton-agua' },
-    { nombre: '💧', id: 'boton-fuego' },
+    { nombre: '🔥', id: 'boton-fuego' },
+    { nombre: '🔥', id: 'boton-fuego' },
+    { nombre: '🔥', id: 'boton-fuego' },
+    { nombre: '💧', id: 'boton-agua' },
     { nombre: '🌱', id: 'boton-tierra' }
 );
 
@@ -130,10 +130,6 @@ function iniciarJuego() {
         }
     });
 
-    // btnFuego.addEventListener('click', ataqueFuego);
-    // btnAgua.addEventListener('click', ataqueAgua);
-    // btnTierra.addEventListener('click', ataqueTierra);
-
     btnReiniciarJuego.addEventListener('click', reiniciarJuego);
 }
 
@@ -169,13 +165,19 @@ function extraerAtaques(mascotaJugador) {
 }
 
 function mostrarAtaques(ataques) {
-    let botonesDeAtaque;
-
     ataques.forEach((ataque) => {
-        botonesDeAtaque = `<button id=${ataque.id} class="boton-de-ataque">${ataque.nombre}</button>`;
+        ataquesMokepon = `<button id=${ataque.id} class="boton-de-ataque">${ataque.nombre}</button>`;
 
-        contenedorBotones.innerHTML += botonesDeAtaque;
+        contenedorBotones.innerHTML += ataquesMokepon;
     });
+
+    btnFuego = document.getElementById('boton-fuego');
+    btnAgua = document.getElementById('boton-agua');
+    btnTierra = document.getElementById('boton-tierra');
+
+    btnFuego.addEventListener('click', ataqueFuego);
+    btnAgua.addEventListener('click', ataqueAgua);
+    btnTierra.addEventListener('click', ataqueTierra);
 }
 
 function seleccionarMascotaEnemigo() {

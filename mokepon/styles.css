@@ -82,7 +82,7 @@ input {
     row-gap: 30px;
 }
 
-.contenedor-botones {
+#contenedor-botones {
     display: flex;
     column-gap: 10px;
 }
