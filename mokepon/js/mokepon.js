@@ -38,10 +38,10 @@ let mascotaSeleccionada = false;
 
 // CREANDO LA CLASE
 class Mokepon {
-    constructor(nombre, imagen, vida) {
+    constructor(nombre, imagen, tipo) {
         this.nombre = nombre;
         this.imagen = imagen;
-        this.vida = vida;
+        this.tipo = tipo;
         this.ataques = [];
     }
 }
@@ -50,26 +50,44 @@ class Mokepon {
 let hipodoge = new Mokepon(
     'Hipodoge',
     './assets/mokepons_mokepon_hipodoge_attack.png',
-    5
+    'Agua'
 );
 
 let capipepo = new Mokepon(
     'Capipepo',
     './assets/mokepons_mokepon_capipepo_attack.png',
-    5
+    'Tierra'
 );
 
 let ratigueya = new Mokepon(
     'Ratigueya',
     './assets/mokepons_mokepon_ratigueya_attack.png',
-    5
+    'Fuego'
+);
+
+let pydos = new Mokepon(
+    'Pydos',
+    './assets/mokepons_mokepon_pydos_attack.png',
+    'Agua'
+);
+
+let tucapalma = new Mokepon(
+    'Tucapalma',
+    './assets/mokepons_mokepon_tucapalma_attack.png',
+    'Tierra'
+);
+
+let langostelvis = new Mokepon(
+    'Langostelvis',
+    './assets/mokepons_mokepon_langostelvis_attack.png',
+    'Fuego'
 );
 
 // OBJETOS LITERALES CONSTRUIDOS SIN CLASES
 hipodoge.ataques.push(
     { nombre: '💧', id: 'boton-agua' },
     { nombre: '💧', id: 'boton-agua' },
-    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '🌀', id: 'boton-agua' },
     { nombre: '🔥', id: 'boton-fuego' },
     { nombre: '🌱', id: 'boton-tierra' }
 );
@@ -77,7 +95,7 @@ hipodoge.ataques.push(
 capipepo.ataques.push(
     { nombre: '🌱', id: 'boton-tierra' },
     { nombre: '🌱', id: 'boton-tierra' },
-    { nombre: '🌱', id: 'boton-tierra' },
+    { nombre: '🌑', id: 'boton-tierra' },
     { nombre: '💧', id: 'boton-agua' },
     { nombre: '🔥', id: 'boton-fuego' }
 );
@@ -85,12 +103,37 @@ capipepo.ataques.push(
 ratigueya.ataques.push(
     { nombre: '🔥', id: 'boton-fuego' },
     { nombre: '🔥', id: 'boton-fuego' },
+    { nombre: '⚡', id: 'boton-fuego' },
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '🌱', id: 'boton-tierra' }
+);
+
+pydos.ataques.push(
+    { nombre: '⚡', id: 'boton-fuego' },
+    { nombre: '💧', id: 'boton-agua' },
+    { nombre: '🌀', id: 'boton-agua' },
     { nombre: '🔥', id: 'boton-fuego' },
+    { nombre: '🌱', id: 'boton-tierra' }
+);
+
+tucapalma.ataques.push(
+    { nombre: '🌱', id: 'boton-tierra' },
+    { nombre: '🌑', id: 'boton-tierra' },
+    { nombre: '🌱', id: 'boton-tierra' },
+    { nombre: '🌀', id: 'boton-agua' },
+    { nombre: '🔥', id: 'boton-fuego' }
+);
+
+langostelvis.ataques.push(
+    { nombre: '🌀', id: 'boton-agua' },
+    { nombre: '🔥', id: 'boton-fuego' },
+    { nombre: '⚡', id: 'boton-fuego' },
     { nombre: '💧', id: 'boton-agua' },
     { nombre: '🌱', id: 'boton-tierra' }
 );
 
 mokepones.push(hipodoge, capipepo, ratigueya);
+mokepones.push(pydos, tucapalma, langostelvis);
 
 // FUNCIÓN PARA INCIAR EL JUEGO
 function iniciarJuego() {
@@ -250,11 +293,11 @@ function combate() {
     ) {
         crearMensaje('GANASTE 😆🎉');
         vidasEnemigo--;
-        spanVidasEnemigo.innerHTML = `${vidasEnemigo}`;
+        spanVidasEnemigo.innerHTML = `${vidasEnemigo} ❤`;
     } else {
         crearMensaje('PERDISTE 😢👎');
         vidasJugador--;
-        spanVidasJugador.innerHTML = `${vidasJugador}`;
+        spanVidasJugador.innerHTML = `${vidasJugador} ❤`;
     }
 
     revisarVidas();

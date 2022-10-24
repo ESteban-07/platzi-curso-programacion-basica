@@ -37,7 +37,9 @@ button {
 }
 
 .tarjetas {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(2, 1fr);
     gap: 10px;
 }
 
@@ -117,20 +119,27 @@ input {
 .tablero-juego {
     display: grid;
     grid-template-columns: repeat(2, 100px);
-    column-gap: 20px;
+    column-gap: 40px;
     text-align: center;
     color: white;
 }
 
 #vidas-jugador,
 #vidas-enemigo {
-    font-size: 28px;
+    font-size: 20px;
 }
 
 /* RESPONSIVE DESIGN */
 
-@media screen and (max-width: 575px) {
+@media screen and (max-width: 600px) {
     .tarjetas {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .tarjetas {
+        display: flex;
         flex-direction: column;
     }
 }
