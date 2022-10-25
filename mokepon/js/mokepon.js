@@ -6,7 +6,9 @@ const btnReiniciarJuego = document.getElementById('boton-reiniciar');
 
 const mostrarMensaje = document.getElementById('resultado');
 
-const spanMascotaJugador = document.getElementById('mascota-jugador');
+const divMascotaJugador = document.getElementById('div-mascota-jugador');
+const divMascotaEnemigo = document.getElementById('div-mascota-enemigo');
+// const spanMascotaJugador = document.getElementById('mascota-jugador');
 
 const spanMascotaEnemigo = document.getElementById('mascota-enemigo');
 
@@ -181,11 +183,35 @@ function iniciarJuego() {
 }
 
 // FUNCIONES PARA MASCOTAS
+function tarjetaMascota(rol, mascota) {
+    let mascota_jugador = '';
+
+    mokepones.forEach((mokepon) => {
+        if (mokepon.nombre == mascota) {
+            mascota_jugador = `
+                <p id="rol">${rol}</p>
+                <img
+                    class="imagen-mascota"
+                    src="${mokepon.imagen}"
+                    alt="${mokepon.nombre}"
+                />
+                <p>${mokepon.nombre}</p>
+                `;
+        }
+    });
+
+    return mascota_jugador;
+}
+
 function seleccionarMascotaJugador() {
     for (let mascota of mascotas) {
         if (mascota.checked) {
             mascotaJugador = mascota.id;
-            spanMascotaJugador.innerText = mascotaJugador;
+
+            divMascotaJugador.innerHTML = `${tarjetaMascota(
+                'jugador',
+                mascotaJugador
+            )}`;
 
             extraerAtaques(mascotaJugador);
 
@@ -246,7 +272,10 @@ function secuenciaAtaque() {
 function seleccionarMascotaEnemigo() {
     let mascotaAleatoria = aleatorio(0, mokepones.length - 1);
 
-    spanMascotaEnemigo.innerHTML = mokepones[mascotaAleatoria].nombre;
+    divMascotaEnemigo.innerHTML = tarjetaMascota(
+        'enemigo',
+        mokepones[mascotaAleatoria].nombre
+    );
 
     ataquesMokeponEnemigo = mokepones[mascotaAleatoria].ataques.map(
         (ataque) => {
