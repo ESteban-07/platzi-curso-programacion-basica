@@ -288,8 +288,6 @@ function seleccionarMascotaEnemigo() {
 
     ataquesMokeponEnemigo = mokepones[mascotaAleatoria].ataques;
 
-    console.log(ataquesMokeponEnemigo);
-
     secuenciaAtaque();
 }
 
@@ -318,8 +316,6 @@ function ataqueAleatorioEnemigo() {
 
     ataquesMokeponEnemigo.splice(randomIndex, 1);
 
-    console.log(ataquesMokeponEnemigo);
-
     combate();
 }
 
@@ -344,19 +340,28 @@ function combate() {
         trofeosEnemigo.innerHTML = `${victoriasEnemigo}`;
     }
 
-    // revisarTrofeos();
+    if (finDelCombate()) {
+        setTimeout(() => {
+            revisarTrofeos();
+        }, 1500);
+    }
+}
+
+function finDelCombate() {
+    let ataquesDeshabilitados = [...botones].every((btn) => btn.disabled);
+    return ataquesDeshabilitados;
 }
 
 // REVISAR VIDAS DESPUES DE CADA COMBATE
-// function revisarTrofeos() {
-//     if (victoriasJugador > victoriasEnemigo) {
-//         crearMensajeFinal('GANASTE EL COMBATE 😀');
-//     } else if (victoriasEnemigo > victoriasJugador) {
-//         crearMensajeFinal('PERDISTE EL COMBATE 😪');
-//     } else {
-//         crearMensajeFinal('COMBATE EMPATADO ❗');
-//     }
-// }
+function revisarTrofeos() {
+    if (victoriasJugador > victoriasEnemigo) {
+        crearMensajeFinal('GANASTE EL COMBATE 😀');
+    } else if (victoriasEnemigo > victoriasJugador) {
+        crearMensajeFinal('PERDISTE EL COMBATE 😪');
+    } else {
+        crearMensajeFinal('COMBATE EMPATADO ❗');
+    }
+}
 
 // FUNCIÓN PARA CREAR MENSAJES
 function mostrarNombreAtaque(emoji) {
