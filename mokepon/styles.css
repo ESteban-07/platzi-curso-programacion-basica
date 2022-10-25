@@ -168,6 +168,10 @@ input {
     width: 80px;
 }
 
+#ataques {
+    font-size: 14px;
+}
+
 #vidas-jugador,
 #vidas-enemigo {
     font-size: 20px;
