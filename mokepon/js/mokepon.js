@@ -39,6 +39,7 @@ let btnAgua;
 let btnTierra;
 let botones;
 
+let numeroRonda = 1;
 let victoriasJugador = 0;
 let victoriasEnemigo = 0;
 const trofeosJugador = document.getElementById('trofeos-jugador');
@@ -95,51 +96,51 @@ let langostelvis = new Mokepon(
 
 // OBJETOS LITERALES CONSTRUIDOS SIN CLASES
 hipodoge.ataques.push(
-    { nombre: '💧 AGUA 💧', emoji: '💧', id: 'boton-agua' },
-    { nombre: '💧 AGUA 💧', emoji: '💧', id: 'boton-agua' },
-    { nombre: '🌀 TORNADO 🌀', emoji: '🌀', id: 'boton-agua' },
-    { nombre: '🔥 FUEGO 🔥', emoji: '🔥', id: 'boton-fuego' },
-    { nombre: '🌱 TIERRA 🌱', emoji: '🌱', id: 'boton-tierra' }
+    { nombre: 'Agua 💧', emoji: '💧', id: 'boton-agua' },
+    { nombre: 'Agua 💧', emoji: '💧', id: 'boton-agua' },
+    { nombre: 'Tornado 🌀', emoji: '🌀', id: 'boton-agua' },
+    { nombre: 'Fuego 🔥', emoji: '🔥', id: 'boton-fuego' },
+    { nombre: 'Tierra 🌱', emoji: '🌱', id: 'boton-tierra' }
 );
 
 capipepo.ataques.push(
-    { nombre: '🌱 TIERRA 🌱', emoji: '🌱', id: 'boton-tierra' },
-    { nombre: '🌱 TIERRA 🌱', emoji: '🌱', id: 'boton-tierra' },
-    { nombre: '🌑 ROCA 🌑', emoji: '🌑', id: 'boton-tierra' },
-    { nombre: '💧 AGUA 💧', emoji: '💧', id: 'boton-agua' },
-    { nombre: '🔥 FUEGO 🔥', emoji: '🔥', id: 'boton-fuego' }
+    { nombre: 'Tierra 🌱', emoji: '🌱', id: 'boton-tierra' },
+    { nombre: 'Tierra 🌱', emoji: '🌱', id: 'boton-tierra' },
+    { nombre: 'Roca 🌑', emoji: '🌑', id: 'boton-tierra' },
+    { nombre: 'Agua 💧', emoji: '💧', id: 'boton-agua' },
+    { nombre: 'Fuego 🔥', emoji: '🔥', id: 'boton-fuego' }
 );
 
 ratigueya.ataques.push(
-    { nombre: '🔥 FUEGO 🔥', emoji: '🔥', id: 'boton-fuego' },
-    { nombre: '🔥 FUEGO 🔥', emoji: '🔥', id: 'boton-fuego' },
-    { nombre: '⚡ TRUENO ⚡', emoji: '⚡', id: 'boton-fuego' },
-    { nombre: '💧 AGUA 💧', emoji: '💧', id: 'boton-agua' },
-    { nombre: '🌱 TIERRA 🌱', emoji: '🌱', id: 'boton-tierra' }
+    { nombre: 'Fuego 🔥', emoji: '🔥', id: 'boton-fuego' },
+    { nombre: 'Fuego 🔥', emoji: '🔥', id: 'boton-fuego' },
+    { nombre: 'Trueno ⚡', emoji: '⚡', id: 'boton-fuego' },
+    { nombre: 'Agua 💧', emoji: '💧', id: 'boton-agua' },
+    { nombre: 'Tierra 🌱', emoji: '🌱', id: 'boton-tierra' }
 );
 
 pydos.ataques.push(
-    { nombre: '⚡ TRUENO ⚡', emoji: '⚡', id: 'boton-fuego' },
-    { nombre: '💧 AGUA 💧', emoji: '💧', id: 'boton-agua' },
-    { nombre: '🌀 TORNADO 🌀', emoji: '🌀', id: 'boton-agua' },
-    { nombre: '🔥 FUEGO 🔥', emoji: '🔥', id: 'boton-fuego' },
-    { nombre: '🌱 TIERRA 🌱', emoji: '🌱', id: 'boton-tierra' }
+    { nombre: 'Trueno ⚡', emoji: '⚡', id: 'boton-fuego' },
+    { nombre: 'Agua 💧', emoji: '💧', id: 'boton-agua' },
+    { nombre: 'Tornado 🌀', emoji: '🌀', id: 'boton-agua' },
+    { nombre: 'Fuego 🔥', emoji: '🔥', id: 'boton-fuego' },
+    { nombre: 'Tierra 🌱', emoji: '🌱', id: 'boton-tierra' }
 );
 
 tucapalma.ataques.push(
-    { nombre: '🌱 TIERRA 🌱', emoji: '🌱', id: 'boton-tierra' },
-    { nombre: '🌑 ROCA 🌑', emoji: '🌑', id: 'boton-tierra' },
-    { nombre: '🌱 TIERRA 🌱', emoji: '🌱', id: 'boton-tierra' },
-    { nombre: '🌀 TORNADO 🌀', emoji: '🌀', id: 'boton-agua' },
-    { nombre: '🔥 FUEGO 🔥', emoji: '🔥', id: 'boton-fuego' }
+    { nombre: 'Tierra 🌱', emoji: '🌱', id: 'boton-tierra' },
+    { nombre: 'Roca 🌑', emoji: '🌑', id: 'boton-tierra' },
+    { nombre: 'Tierra 🌱', emoji: '🌱', id: 'boton-tierra' },
+    { nombre: 'Tornado 🌀', emoji: '🌀', id: 'boton-agua' },
+    { nombre: 'Fuego 🔥', emoji: '🔥', id: 'boton-fuego' }
 );
 
 langostelvis.ataques.push(
-    { nombre: '🌀 TORNADO 🌀', emoji: '🌀', id: 'boton-agua' },
-    { nombre: '🔥 FUEGO 🔥', emoji: '🔥', id: 'boton-fuego' },
-    { nombre: '⚡ TRUENO ⚡', emoji: '⚡', id: 'boton-fuego' },
-    { nombre: '💧 AGUA 💧', emoji: '💧', id: 'boton-agua' },
-    { nombre: '🌱 TIERRA 🌱', emoji: '🌱', id: 'boton-tierra' }
+    { nombre: 'Tornado 🌀', emoji: '🌀', id: 'boton-agua' },
+    { nombre: 'Fuego 🔥', emoji: '🔥', id: 'boton-fuego' },
+    { nombre: 'Trueno ⚡', emoji: '⚡', id: 'boton-fuego' },
+    { nombre: 'Agua 💧', emoji: '💧', id: 'boton-agua' },
+    { nombre: 'Tierra 🌱', emoji: '🌱', id: 'boton-tierra' }
 );
 
 mokepones.push(hipodoge, capipepo, ratigueya);
@@ -322,7 +323,7 @@ function ataqueAleatorioEnemigo() {
 // FUNCIÓN QUE DETERMINA EL RESULTADO DEL COMBATE
 function combate() {
     if (idBtnAtaqueJugador == idBtnAtaqueEnemigo) {
-        crearMensaje('EMPATASTE 🤔❗');
+        crearMensaje('EMPATASTE❗');
     } else if (
         (idBtnAtaqueJugador == 'boton-fuego' &&
             idBtnAtaqueEnemigo == 'boton-tierra') ||
@@ -331,14 +332,16 @@ function combate() {
         (idBtnAtaqueJugador == 'boton-tierra' &&
             idBtnAtaqueEnemigo == 'boton-agua')
     ) {
-        crearMensaje('GANASTE 😆🎉');
+        crearMensaje('GANASTE🎉');
         victoriasJugador++;
         trofeosJugador.innerHTML = `${victoriasJugador}`;
     } else {
-        crearMensaje('PERDISTE 😢👎');
+        crearMensaje('PERDISTE👎');
         victoriasEnemigo++;
         trofeosEnemigo.innerHTML = `${victoriasEnemigo}`;
     }
+
+    numeroRonda++;
 
     if (finDelCombate()) {
         setTimeout(() => {
@@ -382,7 +385,7 @@ function crearMensaje(resultado) {
     let opcionAtaqueJugador = document.getElementById('ataque-jugador');
     let opcionAtaqueEnemigo = document.getElementById('ataque-enemigo');
 
-    mostrarMensaje.innerHTML = resultado;
+    mostrarMensaje.innerHTML = `${numeroRonda}° RONDA: ${resultado}`;
     opcionAtaqueJugador.innerText = mostrarNombreAtaque(ataqueJugador);
     opcionAtaqueEnemigo.innerText = mostrarNombreAtaque(ataqueEnemigo);
 }

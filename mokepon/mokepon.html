@@ -4,12 +4,16 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>MOKEPON!</title>
+        <title>MOK&Eacute;PON</title>
         <link rel="stylesheet" href="./styles.css" />
     </head>
     <body>
         <section id="seleccionar-mascota">
-            <h1 class="titulo">Mok&eacute;pon</h1>
+            <img
+                class="titulo"
+                src="./assets/Mokepon-title.png"
+                alt="Mokepon-title"
+            />
 
             <h2 class="subtitulo">Elige a tu mascota:</h2>
 
@@ -20,21 +24,24 @@
         </section>
 
         <section id="seleccionar-ataque">
-            <h1 class="titulo">Mok&eacute;pon</h1>
+            <img
+                class="titulo"
+                src="./assets/Mokepon-title.png"
+                alt="Mokepon-title"
+            />
+
+            <div class="jugador-vs-enemigo">
+                <div id="div-mascota-jugador"></div>
+                <img src="./assets/vs-match-img.png" alt="versus" />
+                <div id="div-mascota-enemigo"></div>
+            </div>
 
             <h2 class="subtitulo">Elige tu ataque:</h2>
 
             <div id="contenedor-botones"></div>
 
-            <!-- <div id="mostrar-mensaje">
-                <p id="resultado">BUENA SUERTE!</p>
-
-                <button id="boton-reiniciar">Reiniciar</button>
-            </div> -->
-
             <!-- TABLERO DEL JUEGO -->
             <div class="tablero-juego">
-                <div id="div-mascota-jugador"></div>
                 <div id="mostrar-mensaje">
                     <p id="resultado">¡Que comience la batalla!</p>
                     <p id="ataques">
@@ -53,34 +60,11 @@
                         </p>
                     </div>
                 </div>
-                <div id="div-mascota-enemigo"></div>
-                <div id="reiniciar-juego">
-                    <button id="boton-reiniciar">Reiniciar</button>
-                </div>
             </div>
 
-            <!-- <div class="tablero-juego">
-                <div id="ataques-jugador">
-                    <p>JUGADOR</p>
-                    <p><span id="vidas-jugador">3 ❤</span></p>
-                    <img
-                        src="./assets/mokepons_mokepon_capipepo_attack.png"
-                        alt="Capipepo"
-                        style="width: 80px"
-                    />
-                    <p><span id="mascota-jugador"></span></p>
-                </div>
-                <div id="ataques-enemigo">
-                    <p>ENEMIGO</p>
-                    <p><span id="vidas-enemigo">3 ❤</span></p>
-                    <img
-                        src="./assets/mokepons_mokepon_ratigueya_attack.png"
-                        alt="Capipepo"
-                        style="width: 80px"
-                    />
-                    <p><span id="mascota-enemigo"></span></p>
-                </div>
-            </div> -->
+            <div id="reiniciar-juego">
+                <button id="boton-reiniciar">Reiniciar</button>
+            </div>
         </section>
         <script src="./js/mokepon.js"></script>
     </body>

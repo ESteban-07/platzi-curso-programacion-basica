@@ -25,10 +25,7 @@ button {
 }
 
 .titulo {
-    font-family: 'Fredoka One', cursive;
-    color: white;
-    font-size: 36px;
-    letter-spacing: 1px;
+    width: 300px;
 }
 
 .subtitulo {
@@ -84,6 +81,21 @@ input {
     row-gap: 30px;
 }
 
+.jugador-vs-enemigo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+    background-color: aliceblue;
+    border-radius: 15px;
+    padding: 5px;
+    gap: 10px;
+}
+
+.jugador-vs-enemigo img {
+    width: 55px;
+}
+
 #contenedor-botones {
     display: flex;
     column-gap: 10px;
@@ -100,44 +112,22 @@ input {
     text-align: center;
 }
 
+.tablero-juego {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: black;
+}
+
 #mostrar-mensaje {
+    min-width: 245px;
     display: flex;
     flex-direction: column;
     align-items: center;
     row-gap: 10px;
     background-color: #eeeeee;
-    width: 280px;
     padding: 20px;
     border-radius: 20px;
-}
-
-.tablero-juego {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows: repeat(4, 1fr);
-    gap: 10px;
-    text-align: center;
-    color: white;
-}
-
-#div-mascota-jugador {
-    background-color: aliceblue;
-    color: black;
-    border-radius: 30px;
-    grid-area: 1 / 1 / 4 / 2;
-}
-#mostrar-mensaje {
-    color: black;
-    grid-area: 1 / 2 / 4 / 4;
-}
-#div-mascota-enemigo {
-    background-color: aliceblue;
-    color: black;
-    border-radius: 30px;
-    grid-area: 1 / 4 / 4 / 5;
-}
-#reiniciar-juego {
-    grid-area: 4 / 1 / 5 / 5;
 }
 
 #estadisticas {
@@ -146,21 +136,6 @@ input {
     justify-content: space-between;
 }
 
-/* .tablero-juego {
-    display: grid;
-    grid-template-columns: repeat(2, 100px);
-    column-gap: 40px;
-    text-align: center;
-    color: white;
-} */
-
-/* .reiniciar-juego {
-    text-align: center;
-}
-#boton-reiniciar {
-    border: none;
-    color: #11468f;
-} */
 #rol {
     text-transform: uppercase;
 }
@@ -191,10 +166,3 @@ input {
         flex-direction: column;
     }
 }
-
-/* @media screen and (max-width: 360px) {
-    .boton-de-ataque {
-        width: 90px;
-        font-size: 12px;
-    }
-} */
