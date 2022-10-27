@@ -42,28 +42,31 @@
 
             <div class="tablero-juego">
                 <div id="mostrar-mensaje">
-                    <p id="resultado">¡Que comience la batalla!</p>
-                    <p id="ataques">
-                        <span id="ataque-jugador"></span>
-                        🆚
-                        <span id="ataque-enemigo"></span>
-                    </p>
-                    <div id="estadisticas">
-                        <p>
-                            <strong>TÚ: </strong>
-                            <span id="trofeos-jugador">0</span>🏆
-                        </p>
-                        <p>
-                            <strong>ÉL: </strong>
-                            <span id="trofeos-enemigo">0</span>🏆
-                        </p>
+                    <p id="mensaje-resultado">¡Que comience la batalla!</p>
+                    <div id="ataques">
+                        <div id="ataques-jugador">
+                            <p class="trofeo">
+                                <strong>TÚ: </strong>
+                                <span id="trofeos-jugador">0</span> 🏆
+                            </p>
+                        </div>
+                        <div id="ataques-enemigo">
+                            <p class="trofeo">
+                                <strong>ÉL: </strong>
+                                <span id="trofeos-enemigo">0</span> 🏆
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <div id="reiniciar-juego">
-                <button id="boton-reiniciar">Reiniciar</button>
-            </div>
+            <button id="boton-reiniciar" class="btn-green">
+                <img
+                    class="icon"
+                    src="https://htmlacademy.ru/assets/icons/reload-6x-white.png"
+                />
+                <span>Reiniciar</span>
+            </button>
         </section>
 
         <!-- javascript -->

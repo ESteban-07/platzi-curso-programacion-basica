@@ -8,9 +8,9 @@ const divMascotaEnemigo = document.getElementById('div-mascota-enemigo');
 const contenedorBotones = document.getElementById('contenedor-botones');
 const btnReiniciarJuego = document.getElementById('boton-reiniciar');
 
-const mostrarMensaje = document.getElementById('resultado');
-const ataquesJugador = document.getElementById('ataque-jugador');
-const ataquesEnemigo = document.getElementById('ataque-enemigo');
+const mensajeResultado = document.getElementById('mensaje-resultado');
+const divAtaqueJugador = document.getElementById('ataques-jugador');
+const divAtaqueEnemigo = document.getElementById('ataques-enemigo');
 const trofeosJugador = document.getElementById('trofeos-jugador');
 const trofeosEnemigo = document.getElementById('trofeos-enemigo');
 
@@ -219,7 +219,7 @@ function combate() {
     if (finDelCombate()) {
         setTimeout(() => {
             revisarTrofeos();
-        }, 1500);
+        }, 2000);
     }
 }
 
@@ -256,13 +256,20 @@ function mostrarNombreAtaque(emoji) {
 }
 
 function crearMensaje(resultado) {
-    mostrarMensaje.innerHTML = `${numeroRonda}° RONDA: ${resultado}`;
-    ataquesJugador.innerText = mostrarNombreAtaque(emojiAtaqueJugador);
-    ataquesEnemigo.innerText = mostrarNombreAtaque(emojiAtaqueEnemigo);
+    const nuevoAtaqueJugador = document.createElement('p');
+    const nuevoAtaqueEnemigo = document.createElement('p');
+
+    mensajeResultado.innerHTML = `${numeroRonda}° RONDA: ${resultado}`;
+
+    nuevoAtaqueJugador.innerText = mostrarNombreAtaque(emojiAtaqueJugador);
+    nuevoAtaqueEnemigo.innerHTML = mostrarNombreAtaque(emojiAtaqueEnemigo);
+
+    divAtaqueJugador.appendChild(nuevoAtaqueJugador);
+    divAtaqueEnemigo.appendChild(nuevoAtaqueEnemigo);
 }
 
 function crearMensajeFinal(resultadoFinal) {
-    mostrarMensaje.innerHTML = resultadoFinal;
+    mensajeResultado.innerHTML = resultadoFinal;
 }
 
 function aleatorio(min, max) {

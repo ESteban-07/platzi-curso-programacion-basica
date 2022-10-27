@@ -144,12 +144,62 @@ input {
 }
 
 #ataques {
+    width: 90%;
+    display: flex;
+    text-align: center;
+    justify-content: space-between;
     font-size: 14px;
 }
 
-#vidas-jugador,
-#vidas-enemigo {
-    font-size: 20px;
+.trofeo {
+    margin-bottom: 3px;
+}
+
+#ataques-jugador,
+#ataques-enemigo {
+    width: 90px;
+    padding: 3px;
+    border: 1px dotted #000;
+    border-radius: 3px;
+}
+
+#boton-reiniciar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 150px;
+    height: 45px;
+    margin: 20px auto;
+    padding: 0;
+    font-size: 18px;
+    text-align: center;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    outline: none;
+    cursor: pointer;
+    overflow: hidden;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.25);
+    transition: transform 0.4s ease-in-out;
+}
+
+#boton-reiniciar:active {
+    top: 1px;
+    box-shadow: none;
+}
+
+.btn-green {
+    background: #1abc9c;
+    border-bottom: 2px solid #12ab8d;
+    box-shadow: inset 0 -2px #12ab8d;
+}
+.btn-green .icon {
+    width: 24px;
+    height: 24px;
+    transition: all 0.4s ease-in-out;
+}
+.btn-green:hover .icon {
+    transform: rotate(360deg) scale(1.1);
 }
 
 /* RESPONSIVE DESIGN */
